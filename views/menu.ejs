@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="heading-title text-center">
-          <h2>Notre Menu</h2>
+          <h2>Menu</h2>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
         </div>
       </div>
@@ -26,7 +26,21 @@
         <div class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             <div class="row">
-              <div class="col-lg-4 col-md-6 special-grid drinks">
+              <!-- row start from here -->
+              <%  products.forEach(function(product){ %>
+                <div class="col-lg-4 col-md-6 special-grid drinks">
+                  <div class="gallery-single fix">
+                    <img class="img-fluid" src=<%=product.imagePath%> alt="Image">
+                    <div class="why-text">
+                      <h4><%=product.title%></h4>
+                      <p><%=product.description%></p>
+                      <h5><%=product.price%></h5>
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+              <!-- <div class="col-lg-4 col-md-6 special-grid drinks">
                 <div class="gallery-single fix">
                   <img src="images/img-01.jpg" class="img-fluid" alt="Image">
                   <div class="why-text">
@@ -125,8 +139,8 @@
                 </div>
               </div>
             </div>
-
-          </div>
+          </div> -->
+          <!-- row ends here -->
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <div class="row">
               <div class="col-lg-4 col-md-6 special-grid drinks">
