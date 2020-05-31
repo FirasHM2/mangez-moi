@@ -15,17 +15,24 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
-for (var i = 0; i < products.length; i++) {
-  products[i].save();
-}
+
+
+
+Product.find({},function(err,foundProducts){
+  if (products.length > foundProducts.length) {
+    for (var i = foundProducts.length; i < products.length; i++) {
+      products[i].save();
+    }
+  }
+})
+
+
 
 app.get("/", function(req, res){
-
-  Product.find({}, function(err, foundProducts){
-    res.render("index", {
-      products: foundProducts
-      });
-  });
+  console.log(req.body.a);
+Product.find({type:"sandwich"},function(err,result){
+  res.render("index", {sandwich:result});
+    })
   })
 
 app.get("/:pageName", function(req, res){
