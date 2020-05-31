@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const products = require("./temporaire/product-seed");
 const Product = require("./models/products");
+// const type = require("./temporaire/menu-buttons");
 
 mongoose.connect('mongodb://localhost/produitsMangez-moi', {useNewUrlParser: true});
 
@@ -18,6 +19,7 @@ app.use(express.static("public"));
 
 
 
+
 Product.find({},function(err,foundProducts){
   if (products.length > foundProducts.length) {
     for (var i = foundProducts.length; i < products.length; i++) {
@@ -27,13 +29,13 @@ Product.find({},function(err,foundProducts){
 })
 
 
-
 app.get("/", function(req, res){
-  console.log(req.body.a);
-Product.find({type:"sandwich"},function(err,result){
+
+Product.find({},function(err,result){
   res.render("index", {sandwich:result});
     })
   })
+
 
 app.get("/:pageName", function(req, res){
   res.render(req.params.pageName);
