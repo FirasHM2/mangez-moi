@@ -34,7 +34,12 @@ app.get("/", function(req, res){
 Product.find({},function(err,result){
   res.render("index", {sandwich:result});
     })
-  })
+});
+
+app.post("/",function(req,res){
+  console.log(req.body.sandwichId);
+})
+
 
 
 app.get("/:pageName", function(req, res){

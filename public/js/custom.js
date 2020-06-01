@@ -30,7 +30,12 @@
     $('#signIn').click(function(){
       $('.signInPopUp').removeClass("right-panel-active");
     });
-
+    /* ..............................................
+      submit form in menu
+      ................................................. */
+      $("#submit").click(function(){
+        $("#myForm").submit();
+      });
 
     /* ..............................................
       Fixed Menu

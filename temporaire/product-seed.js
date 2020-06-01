@@ -49,7 +49,14 @@ const products = [
                                                     description: "panini 2 maison yummy",
                                                     type: "panini",
                                                     price: 5.90
-                                                })
+                                                }),
+                                                new Product({
+                                                             imagePath: "images/img-01.jpg",
+                                                             title: "tacos",
+                                                             description: "tacos maison yummy",
+                                                             type: "tacos",
+                                                             price: 5.90
+                                                         })
                    ];
 
 module.exports = products;
