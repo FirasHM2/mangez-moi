@@ -31,11 +31,93 @@
       $('.signInPopUp').removeClass("right-panel-active");
     });
     /* ..............................................
-      submit form in menu
+      affichage des sandwich dans le menu
       ................................................. */
-      $("#submit").click(function(){
-        $("#myForm").submit();
+      $("#v-pills-tab").click(function(e){
+        $("#categorieRequestInput").val(e.target.innerHTML);
+        $("#categorieRequest").submit();
       });
+
+
+
+    /* ..............................................
+      sandwich Details popup
+      ................................................. */
+      $('.gallery-single ').click(function(){
+        $(".popupHeader").html($(".sandTitle").html());
+        $(".sandwichDetailsContainer").css("display","inline");
+      });
+
+const slidePage = document.querySelector(".sandwichDetailsContainer .slidepage");
+const firstNextBtn = document.querySelector(".detailsNextBtn");
+const prevBtnSec = document.querySelector(".sandwichDetailsContainer .prev-1");
+const nextBtnSec = document.querySelector(".sandwichDetailsContainer .next-1");
+const prevBtnThird = document.querySelector(".sandwichDetailsContainer .prev-2");
+const nextBtnThird = document.querySelector(".sandwichDetailsContainer .next-2");
+const prevBtnFourth = document.querySelector(".sandwichDetailsContainer .prev-3");
+const submitBtn = document.querySelector(".sandwichDetailsContainer .orderSubmit");
+const progressText = document.querySelectorAll(".sandwichDetailsContainer .step p");
+const progressCheck = document.querySelectorAll(".sandwichDetailsContainer .step.check");
+const bullet = document.querySelectorAll(".sandwichDetailsContainer .step.bullet");
+
+let max = 4;
+let current = 1;
+
+firstNextBtn.addEventListener("click",function(){
+	slidePage.style.marginLeft = "-25%";
+	bullet[current - 1].classList.add("active");
+	progressCheck[current - 1].classList.add("active");
+	progressText[current - 1].classList.add("active");
+	current += 1;
+});
+nextBtnSec.addEventListener("click",function(){
+	slidePage.style.marginLeft = "-50%";
+	bullet[current - 1].classList.add("active");
+	progressCheck[current - 1].classList.add("active");
+	progressText[current - 1].classList.add("active");
+	current += 1;
+});
+nextBtnThird.addEventListener("click",function(){
+	slidePage.style.marginLeft = "-75%";
+	bullet[current - 1].classList.add("active");
+	progressCheck[current - 1].classList.add("active");
+	progressText[current - 1].classList.add("active");
+	current += 1;
+});
+submitBtn.addEventListener("click",function(){
+	bullet[current - 1].classList.add("active");
+	progressCheck[current - 1].classList.add("active");
+	progressText[current - 1].classList.add("active");
+	current += 1;
+	setTimeout(function(){
+		alert(document.querySelector("input[name='pain']:checked").value);
+		location.reload();
+	}, 800);
+});
+
+
+
+prevBtnSec.addEventListener("click",function(){
+	slidePage.style.marginLeft = "0%";
+	bullet[current - 2].classList.remove("active");
+	progressCheck[current - 2].classList.remove("active");
+	progressText[current - 2].classList.remove("active");
+	current -= 1;
+});
+prevBtnThird.addEventListener("click",function(){
+	slidePage.style.marginLeft = "-25%";
+	bullet[current - 2].classList.remove("active");
+	progressCheck[current - 2].classList.remove("active");
+	progressText[current - 2].classList.remove("active");
+	current -= 1;
+});
+prevBtnFourth.addEventListener("click",function(){
+	slidePage.style.marginLeft = "-50%";
+	bullet[current - 2].classList.remove("active");
+	progressCheck[current - 2].classList.remove("active");
+	progressText[current - 2].classList.remove("active");
+	current -= 1;
+});
 
     /* ..............................................
       Fixed Menu

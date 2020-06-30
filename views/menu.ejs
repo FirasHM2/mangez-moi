@@ -19,6 +19,9 @@
               <a class="nav-link" id="v-pills-Paninis-tab" data-toggle="pill" href="#v-pills-Paninis" role="tab" aria-controls="v-pills-Paninis" aria-selected="false">Paninis</a>
               <a class="nav-link" id="v-pills-Tacos-tab" data-toggle="pill" href="#v-pills-Tacos" role="tab" aria-controls="v-pills-Tacos" aria-selected="false">Tacos</a>
       </div>
+      <form id="categorieRequest" action="/sandwich" method="post">
+        <input id="categorieRequestInput" type="hidden" name="categieDeSandwich" value="">
+      </form>
       </div>
       <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
@@ -26,143 +29,24 @@
             <div class="row">
               <!-- row start from here -->
             <%sandwich.forEach(function(sandwich){ %>
-             <%  if (sandwich.type === "sandwich") {  %>
+             <%  if (sandwich.type === sandCategory) {  %>
                 <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix" id="submit">
-                      <form class="" action="/" method="post" id="myForm">
+                    <div class="gallery-single fix submit">
                       <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
                       <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
+                        <h4 class="sandTitle"><%=sandwich.title%></h4>
                         <p><%=sandwich.description%></p>
                         <h5><%=sandwich.price%></h5>
                         <input type="hidden" name="sandwichId" value=<%=sandwich._id%>>
+                        <input type="hidden" name="sandwichName" value=<%=sandwich.title%>>
                       </div>
-                      </form>
                     </div>
                 </div>
               <% } %>
-
               <% }) %>
             </div>
           </div>
           <!-- row ends here -->
-          <div class="tab-pane fade" id="v-pills-Burgers" role="tabpanel" aria-labelledby="v-pills-Burgers-tab">
-            <div class="row">
-
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "burger") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-
-                <% }) %>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="v-pills-Hummers" role="tabpanel" aria-labelledby="v-pills-Hummers-tab">
-            <div class="row">
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "hummer") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-                <% }) %>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="v-pills-Americaines" role="tabpanel" aria-labelledby="v-pills-Americaines-tab">
-            <div class="row">
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "amaricaine") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-                <% }) %>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="v-pills-Vegetariens" role="tabpanel" aria-labelledby="v-pills-Vegetariens-tab">
-            <div class="row">
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "vegetarien") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-                <% }) %>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="v-pills-Paninis" role="tabpanel" aria-labelledby="v-pills-Paninis-tab">
-            <div class="row">
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "panini") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-                <% }) %>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="v-pills-Tacos" role="tabpanel" aria-labelledby="v-pills-Tacos-tab">
-            <div class="row">
-              <%sandwich.forEach(function(sandwich){ %>
-               <%  if (sandwich.type === "tacos") {  %>
-                  <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                      </div>
-                    </div>
-                  </div>
-                <% } %>
-                <% }) %>
-            </div>
-          </div>
         </div>
       </div>
     </div>

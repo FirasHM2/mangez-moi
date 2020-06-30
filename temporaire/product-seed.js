@@ -5,56 +5,56 @@ const products = [
                 imagePath: "images/img-01.jpg",
                 title: "Kebab",
                 description: "Kebab maison yummy",
-                type: "sandwich",
+                type: "Sandwichs",
                 price: 5.90
             }),
             new Product({
                          imagePath: "images/img-01.jpg",
-                         title: "hummer",
+                         title: "Hummer",
                          description: "Kebab maison yummy",
-                         type: "hummer",
+                         type: "Hummers",
                          price: 5.90
                      }),
                      new Product({
                                   imagePath: "images/img-01.jpg",
-                                  title: "amaricaine",
+                                  title: "Amaricain",
                                   description: "Kebab maison yummy",
-                                  type: "amaricaine",
+                                  type: "Americaines",
                                   price: 5.90
                               }),
             new Product({
                          imagePath: "images/img-01.jpg",
-                         title: "burger",
+                         title: "Burger",
                          description: "burger maison yummy",
-                         type: "burger",
+                         type: "Burgers",
                          price: 5.90
                      }),
                      new Product({
                                   imagePath: "images/img-01.jpg",
-                                  title: "vegetarien",
+                                  title: "Vegetarien",
                                   description: "vegetarien maison yummy",
-                                  type: "vegetarien",
+                                  type: "Vegetariens",
                                   price: 5.90
                               }),
                               new Product({
                                            imagePath: "images/img-01.jpg",
-                                           title: "panini",
+                                           title: "Panini",
                                            description: "panini maison yummy",
-                                           type: "panini",
+                                           type: "Paninis",
                                            price: 5.90
                                        }),
                                        new Product({
                                                     imagePath: "images/img-01.jpg",
-                                                    title: "panini 2",
+                                                    title: "Panini 2",
                                                     description: "panini 2 maison yummy",
-                                                    type: "panini",
+                                                    type: "Paninis",
                                                     price: 5.90
                                                 }),
                                                 new Product({
                                                              imagePath: "images/img-01.jpg",
-                                                             title: "tacos",
+                                                             title: "Tacos",
                                                              description: "tacos maison yummy",
-                                                             type: "tacos",
+                                                             type: "Tacos",
                                                              price: 5.90
                                                          })
                    ];

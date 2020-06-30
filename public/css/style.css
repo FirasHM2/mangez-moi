@@ -224,6 +224,17 @@ button:focus{
   align-items: center;
   z-index: 10;
 }
+.signInPopUp {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
 .signInPopUp h1 {
 	font-weight: bold;
 	margin: 0;
@@ -296,19 +307,6 @@ button:focus{
 	margin: 8px 0;
 	width: 100%;
 }
-
-.signInPopUp {
-	background-color: #fff;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
-
 .form-container {
 	position: absolute;
 	top: 0;
@@ -450,6 +448,195 @@ button:focus{
   transform: rotate(45deg);
   cursor: pointer;
   z-index: 10;
+}
+/*------------------------------------------------------------------
+    sandwich Details
+-------------------------------------------------------------------*/
+
+/* #sandwichDetails{
+	font-family: sans-serif;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+} */
+.sandwichDetailsContainer{
+  /* display:none; */
+	position: absolute;
+  top: 1500px;
+  left: 435px;
+  display:  none;
+	width: 40%;
+	background: #fff;
+	border-radius: 20%;
+	text-align: center;
+	padding: 50px 35px 10px 35px;
+  border: 1px solid black;
+  z-index: 1;
+}
+.sandwichDetailsContainer header{
+	font-size: 35px;
+	font-weight: 600;
+	margin: 0 0 30px 0;
+}
+.sandwichDetailsContainer .form-outer{
+	width: 100%;
+	overflow: hidden;
+
+}
+.sandwichDetailsContainer .form-outer form{
+	display: flex;
+	width: 400%;
+
+}
+.sandwichDetailsContainer .form-outer form .page{
+	width: 25%;
+	transition: margin-left 0.3s ease-in-out;
+
+}
+.sandwichDetailsContainer .form-outer form .page .title{
+	text-align: left;
+	font-size: 25px;
+	font-weight: 500;
+}
+.sandwichDetailsContainer .form-outer form .page .field{
+	height: 10%;
+	width: 330px;
+	margin: 45px 0;
+	display: flex;
+	position: relative;
+
+}
+.sandwichDetailsContainer .form-outer form .page .field .label{
+
+	position: absolute;
+	top: -30px;
+	font-weight: 500;
+}
+.sandwichDetailsContainer .form-outer form .page .field input{
+	height: 100%;
+	width: 100%;
+	border: 1px solid lightgrey;
+}
+
+.sandwichDetailsContainer .form-outer form .page .field select{
+	width: 100%;
+	padding-left: 10px;
+	font-size: 17px;
+	font-weight: 500;
+}
+.sandwichDetailsContainer .form-outer form .page .field button {
+	width: 42%;
+	height: calc(100% + 5px);
+	margin-top: -20px;
+  margin-left: 50px;
+	border: none;
+	background: #d43f8d;
+	border-radius: 100px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: 0.3s ease;
+}
+.sandwichDetailsContainer .form-outer form .page .field button:hover{
+	background-color: #000;
+}
+.sandwichDetailsContainer .form-outer form .page .btns button{
+	margin-top: -20px!important;
+}
+.sandwichDetailsContainer form .page .btns button.prev{
+	margin-right: 3px;
+	font-size: 17px;
+}
+.sandwichDetailsContainer form .page .btns button.next{
+	margin-left: 3px;
+}
+.sandwichDetailsContainer .orderProgress-bar{
+	display: flex;
+	margin:40px 0;
+}
+.sandwichDetailsContainer .orderProgress-bar .step{
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+.sandwichDetailsContainer .orderProgress-bar .step p{
+	font-size: 18px;
+	font-weight: 500;
+	color: #000;
+	margin-bottom: 8px;
+	transition: 0.2s;
+}
+.sandwichDetailsContainer .orderProgress-bar .step p.active{
+	color: #d43f8d;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet{
+	position: relative;
+	height: 25px;
+	width: 25px;
+	border: 2px solid #000;
+	display: inline-block;
+	border-radius: 50%;
+	transition: 0.2s;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet.active{
+	border-color: #d43f8d;
+	background: #d43f8d;
+}
+.sandwichDetailsContainer .orderProgress-bar .step:last-child .bullet:before,
+.sandwichDetailsContainer .orderProgress-bar .step:last-child .bullet:after{
+	display: none;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet:before,
+.sandwichDetailsContainer .orderProgress-bar .step .bullet:after{
+	position: absolute;
+	content: '';
+	bottom: 11px;
+	right: -51px;
+	height: 3px;
+	width: 44px;
+	background: #262626;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet.active:after{
+	background: #d43f8d;
+	transform: scaleX(0);
+	transform-origin: left;
+	animation: animate 0.3s linear forwards;
+}
+@keyframes animate{
+	100%{
+		transform: scaleX(1);
+	}
+
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet span{
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 25px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.sandwichDetailsContainer .orderProgress-bar .step .bullet.active span{
+	display: none;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .check{
+	position: absolute;
+	left: 50%;
+	top: 70%;
+	font-size: 15px;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+.sandwichDetailsContainer .orderProgress-bar .step .check.active{
+	display: block;
+	color: #fff;
 }
 
 /*------------------------------------------------------------------
@@ -665,6 +852,10 @@ button:focus{
     overflow: hidden;
     -webkit-box-shadow: 0 0 10px #ccc;
     box-shadow: 0 0 10px #ccc;
+    transition: transform 0.25s;
+}
+.gallery-single:hover{
+  transform: translateY(-0.5rem);
 }
 
 .why-text {

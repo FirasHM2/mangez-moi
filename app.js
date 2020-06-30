@@ -28,17 +28,19 @@ Product.find({},function(err,foundProducts){
   }
 })
 
-
+var sandCategory = "Sandwichs";
 app.get("/", function(req, res){
 
 Product.find({},function(err,result){
-  res.render("index", {sandwich:result});
+  res.render("index", {sandwich:result, sandCategory:sandCategory});
     })
 });
 
-app.post("/",function(req,res){
-  console.log(req.body.sandwichId);
+app.post("/sandwich",function(req,res){
+  sandCategory = req.body.categieDeSandwich;
+  res.redirect("/#menu");
 })
+
 
 
 
