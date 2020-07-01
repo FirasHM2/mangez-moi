@@ -52,24 +52,25 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">About</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown-a">
+							<a class="dropdown-item" href="stuff">Stuff</a>
+							<a class="dropdown-item" href="about">about us</a>
+							<a class="dropdown-item" href="gallery">gallery</a>
+						</div>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="contact">Contact us</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Admin</a>
             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-              <a class="dropdown-item" href="reservation">Reservation</a>
-              <a class="dropdown-item" href="stuff">Stuff</a>
-              <a class="dropdown-item" href="gallery">Gallery</a>
+              <a class="dropdown-item" href="reservation">Users</a>
+              <a class="dropdown-item" href="stuff">Orders</a>
+              <a class="dropdown-item" href="gallery">Menus</a>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown-a">
-              <a class="dropdown-item" href="blog">blog</a>
-              <a class="dropdown-item" href="blog-details">blog Single</a>
-            </div>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-					<li class="nav-item"><a id="seConnecter" class="nav-link" href="#">Se connecter</a></li>
+					<li class="nav-item"><a id="seConnecter" class="nav-link" href="userProfile">USER</a></li>
+					<li class="nav-item"><a id="seConnecter" class="nav-link" href="#">Sign in/up</a></li>
         </ul>
       </div>
     </div>
