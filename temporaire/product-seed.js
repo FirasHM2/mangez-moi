@@ -1,4 +1,4 @@
-const Product = require("../models/products");
+const Product = require('mongoose').model('Product');
 
 const products = [
    new Product({
