@@ -560,7 +560,7 @@ button:focus{
 .sandwichDetailsContainer{
   /* display:none; */
 	position: absolute;
-  top: 1500px;
+  top: 500px; /*  updated by ddtran */
   left: 435px;
   display:  none;
 	width: 40%;

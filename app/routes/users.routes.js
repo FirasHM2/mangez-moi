@@ -7,4 +7,7 @@ module.exports = function (app) {
 
     app.route('/signup')
         .post(users.signup);
+
+    app.route('/profile')
+        .get(users.renderProfile);
 };

@@ -1,81 +1,109 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Basic -->
+<html lang="en">
+<!-- Basic -->
+
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- Site Metas -->
-    <title>Mangez-moi</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- Site Metas -->
+  <title>Mangez-moi</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <!-- Site Icons -->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-		<!-- FontAwesome -->
-		<script src="https://kit.fontawesome.com/55d0c547e2.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive CSS -->
+  <link rel="stylesheet" href="css/responsive.css">
 
-    <!--[if lt IE 9]>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/55d0c547e2.js" crossorigin="anonymous"></script>
+
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
+
 <body>
-<header class="top-navbar">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/logo1.png" alt="" />
-      </a>
-			<span class="navbar-text">
-    Actuellement fermee
-  </span>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbars-rs-food">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">About</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown-a">
-							<a class="dropdown-item" href="stuff">Stuff</a>
-							<a class="dropdown-item" href="about">about us</a>
-							<a class="dropdown-item" href="gallery">gallery</a>
-						</div>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="contact">Contact us</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Admin</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown-a">
-              <a class="dropdown-item" href="reservation">Users</a>
-              <a class="dropdown-item" href="stuff">Orders</a>
-              <a class="dropdown-item" href="gallery">Menus</a>
-            </div>
-          </li>
-					<li class="nav-item"><a class="nav-link" href="userProfile">USER</a></li>
-					<li class="nav-item"><a id="seConnecter" class="nav-link" href="#">Sign in/up</a></li>
-        </ul>
+
+  <%- include("../inscriptionPopUp"); -%>
+
+  <header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo1.png" alt="" />
+        </a>
+        <span class="navbar-text">
+          Actuellement fermee
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+          aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbars-rs-food">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About US</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact US</a></li>
+            
+            <!-- admin area -->
+            <% if (user != 'undefined' && user.role == 'admin') { %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Manage</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                <a class="dropdown-item" href="/">Users</a>
+                <a class="dropdown-item" href="/">Orders</a>
+                <a class="dropdown-item" href="/">Menus</a>
+                <!-- Here, you can manage sliders, stuffs, galleries, reviews.
+                    In a word, you can manage 'about us', 'home' pages here -->
+                <a class="dropdown-item" href="#">Homepage</a>
+              </div>
+            </li>
+            <% } %>
+
+            <% if (user != 'undefined') { %>
+            <!-- user area -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dromdown-b" data-toggle="dropdown">John</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown-b">
+                <a class="dropdown-item" href="/profile"><i class="fa fa-user"></i>&nbsp;Profile</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
+              </div>
+            </li>
+
+            <!-- basket -->
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart fa-lg"></i></a></li>
+            <% } %>
+
+            <!-- singin/out -->
+            <% if (user == 'undefined') { %>
+            <li class="nav-item"><a id="seConnecter" class="nav-link" href="#"><i class="fa fa-sign-in fa-lg"></i></a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
-<!--  ..............................................
+    </nav>
+  </header>
+  <!--  ..............................................
 	SignInPopUp
 	.................................................  -->
