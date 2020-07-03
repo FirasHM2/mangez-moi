@@ -30,6 +30,13 @@
     $('#signIn').click(function(){
       $('.signInPopUp').removeClass("right-panel-active");
     });
+    $(document).mouseup(function(e){
+      var container = $('.signInPopUp');
+      if (!container.is(e.target) && container.has(e.target).length === 0)
+      {
+        $(".signInPopUpContainer").css("display","none");
+      }
+    })
     /* ..............................................
       affichage des sandwich dans le menu
       ................................................. */

@@ -5,6 +5,6 @@ var db = mongoose();
 var app = express();
 
 app.listen(3001);
-module.exprots = app;
+module.exports = app;
 
 console.log('Server running at http://localhost:3001/');

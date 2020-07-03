@@ -216,9 +216,9 @@ button:focus{
 .signInPopUpContainer{
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  position: fixed;
   top: 0;
+  margin-top: 5.2%;
   display:none;
   justify-content: center;
   align-items: center;
