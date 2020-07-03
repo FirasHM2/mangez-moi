@@ -1,3 +1,4 @@
+const passport = require("passport");
 var users = require('../controllers/user.controller');
 
 module.exports = function (app) {
