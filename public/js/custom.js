@@ -11,6 +11,21 @@
 		$('body').delay(450).css({'overflow':'visible'});
 	});
 
+	/* ..............................................
+        SCROLL MENU (navbar)
+    ................................................. */
+    /*remove navbar while scroll down and show again while scroll up*/
+    var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-140px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
 
 	/* ..............................................
     SignInPopUp
@@ -36,14 +51,15 @@
       {
         $(".signInPopUpContainer").css("display","none");
       }
-    })
+    });
     /* ..............................................
-      affichage des sandwich dans le menu
+       SUBMIT MENU
       ................................................. */
-      $("#v-pills-tab").click(function(e){
-        $("#categorieRequestInput").val(e.target.innerHTML);
-        $("#categorieRequest").submit();
-      });
+      /*submit menu category to show target sandwichs */
+      // $("#v-pills-tab").click(function(e){
+      //   $("#categorieRequestInput").val(e.target.innerHTML);
+      //   $("#categorieRequest").submit();
+      // });
 
 
 
@@ -53,6 +69,13 @@
       $('.gallery-single ').click(function(){
         $(".popupHeader").html($(".sandTitle").html());
         $(".sandwichDetailsContainer").css("display","inline");
+      });
+      $(document).mouseup(function(e){
+        var container = $('.sandwichDetailsContainer');
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+          $(".sandwichDetailsContainer").css("display","none");
+        }
       });
 
 const slidePage = document.querySelector(".sandwichDetailsContainer .slidepage");
@@ -125,18 +148,6 @@ prevBtnFourth.addEventListener("click",function(){
 	progressText[current - 2].classList.remove("active");
 	current -= 1;
 });
-
-    /* ..............................................
-      Fixed Menu
-      ................................................. */
-
-	$(window).on('scroll', function () {
-		if ($(window).scrollTop() > 50) {
-			$('.top-header').addClass('fixed-menu');
-		} else {
-			$('.top-header').removeClass('fixed-menu');
-		}
-	});
 
 	/* ..............................................
     Gallery
