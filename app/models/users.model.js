@@ -7,6 +7,10 @@ var UserSchema = new Schema({
     firstName: String,
     lastName: String,
     password: String,
+    email: {
+        type: String,
+        index: true
+    },
     googleId: String,
     facebookId: String,
 });

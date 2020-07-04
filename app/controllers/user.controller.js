@@ -26,10 +26,10 @@ exports.signup = function (req, res, next) {
     //     res.send("signup part!");
     // }
     // else {
-        console.log(req.body);
-        User.register(req.body, req.body.password, function (err, user) {
+        // console.log(req.body);
+        User.register({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email}, req.body.password, function (err, user) {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.send(err);
                 // res.redirect("/")
             } else {
