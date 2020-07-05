@@ -1,8 +1,8 @@
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('mongoose').model('User');
+const config = require('./dev.env');
 
 passport.use(User.createStrategy());
 
@@ -15,11 +15,11 @@ passport.deserializeUser(function (id, done) {
     done(err, user);
   });
 });
-/*
+
 passport.use(new GoogleStrategy({
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/secrets",
+  clientID: config.CLIENT_ID,
+  clientSecret: config.CLIENT_SECRET,
+  callbackURL: "http://localhost:3001/auth/google/secrets",
   userProfileUrl: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
   function (accessToken, refreshToken, profile, cb) {
@@ -29,9 +29,9 @@ passport.use(new GoogleStrategy({
   }
 ));
 passport.use(new FacebookStrategy({
-  clientID: process.env.FB_ID,
-  clientSecret: process.env.FB_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/secrets"
+  clientID: config.FB_ID,
+  clientSecret: config.FB_SECRET,
+  callbackURL: "http://localhost:3001/auth/facebook/secrets"
 },
   function (accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
@@ -39,5 +39,3 @@ passport.use(new FacebookStrategy({
     });
   }
 ));
-
-*/

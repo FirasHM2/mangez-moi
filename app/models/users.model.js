@@ -4,12 +4,15 @@ var mongoose = require("mongoose"),
     findOrCreate = require("mongoose-findorcreate");
 
 var UserSchema = new Schema({
-    firstName: String,
-    lastName: String,
+    name: String,
     password: String,
     email: {
         type: String,
         index: true
+    },
+    role: {
+        type : String,
+        default: "user"
     },
     googleId: String,
     facebookId: String,
