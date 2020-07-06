@@ -14,3 +14,10 @@ Product.find({}, function (err, foundProducts) {
         }
     }
 })
+
+
+
+To my friend, Firashm.
+
+I want to chat with you via skype. So if you agree, plz tell me your skypeID, or mail by using this file.
+To use skype in freelancer is illegal. :)

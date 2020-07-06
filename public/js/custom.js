@@ -223,6 +223,15 @@
 		$('.ml-auto > active').removeClass('active');
 		if (current_url == '') $("#home").addClass('active');
 		else $('#'+current_url).addClass('active');
+		// $('#signin').click(function() {
+		// 	$.post('signin', {
+		// 		'email': $('#signinForm > .email').val(),
+		// 		'password' : $('#signupForm > .password').val()
+		// 	}, function (status, data) {
+		// 		alert(status);
+		// 		console.log(status, data);
+		// 	});
+		// })
 	});
 
 
