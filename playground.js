@@ -21,3 +21,6 @@ To my friend, Firashm.
 
 I want to chat with you via skype. So if you agree, plz tell me your skypeID, or mail by using this file.
 To use skype in freelancer is illegal. :)
+
+Thats great Dinh, here is my skypeID: live:hajmabroukfiras
+and my email hajmabroukfiras@gmail.com
