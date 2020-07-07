@@ -1,101 +1,175 @@
 <!--sandwich details popup -->
-<div class="sandwichDetailsContainer">
-	<header class="popupHeader"></header>
-	<div class="orderProgress-bar">
-		<div class="step">
-			<p>Pain</p>
-			<div class="bullet">
-				<span>1</span>
-			</div>
-			<div class="check" fas fa-check></div>
-		</div>
-		<div class="step">
-			<p>Sauces</p>
-			<div class="bullet">
-				<span>2</span>
-			</div>
-			<div class="check" fas fa-check></div>
-		</div>
-		<div class="step">
-			<p>Crudites</p>
-			<div class="bullet">
-				<span>3</span>
-			</div>
-			<div class="check" fas fa-check></div>
-		</div>
-		<div class="step">
-			<p>Supp</p>
-			<div class="bullet">
-				<span>4</span>
-			</div>
-			<div class="check" fas fa-check></div>
-		</div>
-	</div>
-	<div class="form-outer">
-		<form action="#">
-			<div class="page slidepage">
-				<div class="title">Type du pain</div>
+<div class="sandwichDetailsContainer overflow-hidden">
+	<!--multisteps-form-->
+	      <div class="multisteps-form">
+	        <!--progress bar-->
+	        <div class="row">
+	          <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+	            <div class="multisteps-form__progress">
+	              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">essentiels</button>
+	              <button class="multisteps-form__progress-btn" type="button" title="Address">Supplements</button>
+	              <button class="multisteps-form__progress-btn" type="button" title="Order Info">Deserts</button>
+	              <button class="multisteps-form__progress-btn" type="button" title="Comments">Comments</button>
+	            </div>
+	          </div>
+	        </div>
+	        <!--form panels-->
+	        <div class="row">
+	          <div class="col-12 col-lg-8 m-auto">
+	            <form class="multisteps-form__form">
+	              <!--single form panel-->
+	              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="slideHorz">
+	                <h3 class="multisteps-form__title">Name of the sandwich</h3>
+	                <div class="multisteps-form__content">
+	                  <div class="form-row mt-4">
+	                    <div class="col-12 col-sm-6">
+	                      <!-- <input class="multisteps-form__input form-control" type="text" placeholder="First Name"/> -->
+	                      <select class="form-control" name="bread" id="bread">
+	                        <option value="classic">Pain classique</option>
+	                        <option value="pita">Pain pita</option>
+	                      </select>
+	                    </div>
+	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+	                      <!-- <input class="multisteps-form__input form-control" type="text" placeholder="Last Name"/> -->
+	                      <select class="form-control" name="sauce" id="sauce">
+	                        <option value="Sans sauce">Sans sauce</option>
+	                        <option value="Mayonnaise">Mayonnaise</option>
+	                        <option value="Ketchup">Ketchup</option>
+	                        <option value="Andalous">Andalous</option>
+	                        <option value="Algerienne">Algerienne</option>
+	                        <option value="Biggy">Biggy Burger</option>
+	                        <option value="Barbecue">Barbecue</option>
+	                        <option value="Samaurai">Samaurai</option>
+	                      </select>
+	                    </div>
+	                  </div>
+	                  <div class="form-row mt-4">
+	                    <div class="col-12 col-sm-6">
+	                      <div class="multisteps-form__input form-control">
+	                        <input type="checkbox" name="Salade" value="Ingredients" checked />
+	                        <label for="Salade">Salade</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <input type="checkbox" name="Tomate" value="Ingredients" checked/>
+	                        <label for="Tomate">Tomate</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <input type="checkbox" name="Oignon" value="Ingredients" checked/>
+	                        <label for="Oignon">Oignon</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	                      </div>
 
-				<div class="field">
-					<span>Pain classique</span>
-					<input type="radio" name="pain" value="classique">
-					<span>Pain galette</span>
-					<input type="radio" name="pain" value="galette">
-				</div>
-				<div class="field detailsNextBtn">
-					<button type="button">Next</button>
-				</div>
-			</div>
-			<div class="page">
-				<div class="title">Contact INFO:</div>
-				<div class="field">
-					<div class="label">Email Address</div>
-					<input type="text" name="">
-				</div>
-				<div class="field">
-					<div class="label">Phone Number</div>
-					<input type="number" name="">
-				</div>
-				<div class="field btns">
-					<button class="prev-1 prev" type="button">Previous</button>
-					<button class="next-1 next" type="button">Next</button>
-				</div>
-			</div>
-			<div class="page">
-				<div class="title">Date of Birth:</div>
-				<div class="field">
-					<div class="label">Date</div>
-					<input type="text" name="">
-				</div>
-				<div class="field">
-					<div class="label">Gender</div>
-					<select>
-						<option>Male</option>
-						<option>Female</option>
-						<option>Other</option>
-					</select>
-				</div>
-				<div class="field btns">
-					<button class="prev-2 prev" type="button">Previous</button>
-					<button class="next-2 next" type="button">Next</button>
-				</div>
-			</div>
-			<div class="page">
-				<div class="title">Login Details:</div>
-				<div class="field">
-					<div class="label">Username</div>
-					<input type="text" name="">
-				</div>
-				<div class="field">
-					<div class="label">Password</div>
-					<input type="password" name="">
-				</div>
-				<div class="field btns">
-					<button class="prev-3 prev" type="button">Previous</button>
-					<button class="orderSubmit" type="button">Submit</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	</div>
+	                    </div>
+	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+	                      <!-- <input class="multisteps-form__input form-control" type="email" placeholder="Email"/> -->
+	                      <select class="form-control multisteps-form__input" name="frites" id="frites">
+	                        <option value="frites">Menu (avec frites)</option>
+	                        <option value="sans frites">Sans frites</option>
+	                      </select>
+	                    </div>
+	                  </div>
+	                  <div class="form-row mt-4">
+	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+	                      <select class="form-control multisteps-form__input" name="drinks" id="drinks">
+	                        <option value="Coca">Coca</option>
+	                        <option value="Fanta">Fanta</option>
+	                        <option value="7up">7up</option>
+	                        <option value="Ice tee">Ice tee</option>
+	                        <option value="Sans boisson">Sans boisson</option>
+	                      </select>
+	                    </div>
+	                  </div>
+	                   <!--  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+	                      <input class="multisteps-form__input form-control" type="password" placeholder="Repeat Password"/>
+	                    </div>
+	                  </div> -->
+	                  <div class="button-row d-flex mt-4">
+	                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+	                  </div>
+	                </div>
+	              </div>
+	              <!--single form panel-->
+	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
+	                <h3 class="multisteps-form__title">Supplements</h3>
+	                <div class="multisteps-form__content">
+	                  <span>0.5$</span>
+	                  <div class="form-row mt-4">
+	                    <div class="col">
+	                      <label for="Cheddar">Cheddar: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Bacon: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Mozza: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Sujuk: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                    </div>
+	                  </div>
+	                  <span>0.9$</span>
+	                  <div class="form-row mt-4">
+	                    <div class="col">
+	                      <label for="Cheddar">Cheddar: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Bacon: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Mozza: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Sujuk: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                    </div>
+	                  </div>
+	                  <span>1.5$</span>
+	                  <div class="form-row mt-4">
+	                    <label for="Cheddar">Cheddar: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Bacon: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Mozza: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Sujuk: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                  </div>
+	                  <div class="button-row d-flex mt-4">
+	                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+	                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+	                  </div>
+	                </div>
+	              </div>
+	              <!--single form panel-->
+	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
+	                <h3 class="multisteps-form__title">Deserts</h3>
+	                <div class="multisteps-form__content">
+	                  <div class="row">
+	                      <div class="form-row mt-4">
+	                    <label for="Cheddar">Cheddar: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Bacon: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Mozza: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                      <label for="Cheddar">Sujuk: </label>
+	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
+	                  </div>
+	                  </div>
+	                  <div class="row">
+	                    <div class="button-row d-flex mt-4 col-12">
+	                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+	                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	              <!--single form panel-->
+	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
+	                <h3 class="multisteps-form__title">Additional Comments</h3>
+	                <div class="multisteps-form__content">
+	                  <div class="form-row mt-4">
+	                    <textarea class="multisteps-form__textarea form-control" placeholder="Additional Comments and Requirements"></textarea>
+	                  </div>
+	                  <div class="button-row d-flex mt-4">
+	                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+	                    <button class="btn btn-success ml-auto" type="button" title="Send">Send</button>
+	                  </div>
+	                </div>
+	              </div>
+	            </form>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
 	<!-- end popup -->

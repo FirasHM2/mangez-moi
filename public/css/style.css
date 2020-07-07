@@ -554,192 +554,123 @@ button:focus{
     sandwich Details
 -------------------------------------------------------------------*/
 
-/* #sandwichDetails{
-	font-family: sans-serif;
+.sandwichDetailsContainer{
+  display: none;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  height: 100%;
+  position: fixed;
   top: 0;
+  background-color: rgba(250, 250, 250, 0.7);
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
-} */
-.sandwichDetailsContainer{
-  /* display:none; */
-	position: absolute;
-  top: 500px; /*  updated by ddtran */
-  left: 435px;
-  display:  none;
-	width: 40%;
-	background: #fff;
-	border-radius: 20%;
-	text-align: center;
-	padding: 50px 35px 10px 35px;
-  border: 1px solid black;
+  z-index: 100;
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.multisteps-form{
+  margin-top: 100px;
+}
+.multisteps-form__progress {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.multisteps-form__progress-btn {
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  position: relative;
+  padding-top: 20px;
+  color: rgba(108, 117, 125, 0.7);
+  text-indent: -9999px;
+  border: none;
+  background-color: transparent;
+  outline: none !important;
+  cursor: pointer;
+}
+@media (min-width: 500px) {
+  .multisteps-form__progress-btn {
+    text-indent: 0;
+  }
+}
+.multisteps-form__progress-btn:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 13px;
+  height: 13px;
+  content: '';
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 3;
+}
+.multisteps-form__progress-btn:after {
+  position: absolute;
+  top: 5px;
+  left: calc(-50% - 13px / 2);
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  display: block;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background-color: currentColor;
   z-index: 1;
 }
-.sandwichDetailsContainer header{
-	font-size: 35px;
-	font-weight: 600;
-	margin: 0 0 30px 0;
+.multisteps-form__progress-btn:first-child:after {
+  display: none;
 }
-.sandwichDetailsContainer .form-outer{
-	width: 100%;
-	overflow: hidden;
-
+.multisteps-form__progress-btn.js-active {
+  color: #007bff;
 }
-.sandwichDetailsContainer .form-outer form{
-	display: flex;
-	width: 400%;
-
-}
-.sandwichDetailsContainer .form-outer form .page{
-	width: 25%;
-	transition: margin-left 0.3s ease-in-out;
-
-}
-.sandwichDetailsContainer .form-outer form .page .title{
-	text-align: left;
-	font-size: 25px;
-	font-weight: 500;
-}
-.sandwichDetailsContainer .form-outer form .page .field{
-	height: 10%;
-	width: 330px;
-	margin: 45px 0;
-	display: flex;
-	position: relative;
-
-}
-.sandwichDetailsContainer .form-outer form .page .field .label{
-
-	position: absolute;
-	top: -30px;
-	font-weight: 500;
-}
-.sandwichDetailsContainer .form-outer form .page .field input{
-	height: 100%;
-	width: 100%;
-	border: 1px solid lightgrey;
+.multisteps-form__progress-btn.js-active:before {
+  -webkit-transform: translateX(-50%) scale(1.2);
+          transform: translateX(-50%) scale(1.2);
+  background-color: currentColor;
 }
 
-.sandwichDetailsContainer .form-outer form .page .field select{
-	width: 100%;
-	padding-left: 10px;
-	font-size: 17px;
-	font-weight: 500;
-}
-.sandwichDetailsContainer .form-outer form .page .field button {
-	width: 42%;
-	height: calc(100% + 5px);
-	margin-top: -20px;
-  margin-left: 50px;
-	border: none;
-	background: #d43f8d;
-	border-radius: 100px;
-	color: #fff;
-	font-size: 18px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: 0.3s ease;
-}
-.sandwichDetailsContainer .form-outer form .page .field button:hover{
-	background-color: #000;
-}
-.sandwichDetailsContainer .form-outer form .page .btns button{
-	margin-top: -20px!important;
-}
-.sandwichDetailsContainer form .page .btns button.prev{
-	margin-right: 3px;
-	font-size: 17px;
-}
-.sandwichDetailsContainer form .page .btns button.next{
-	margin-left: 3px;
-}
-.sandwichDetailsContainer .orderProgress-bar{
-	display: flex;
-	margin:40px 0;
-}
-.sandwichDetailsContainer .orderProgress-bar .step{
-	position: relative;
-	text-align: center;
-	width: 100%;
-}
-.sandwichDetailsContainer .orderProgress-bar .step p{
-	font-size: 18px;
-	font-weight: 500;
-	color: #000;
-	margin-bottom: 8px;
-	transition: 0.2s;
-}
-.sandwichDetailsContainer .orderProgress-bar .step p.active{
-	color: #d43f8d;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet{
-	position: relative;
-	height: 25px;
-	width: 25px;
-	border: 2px solid #000;
-	display: inline-block;
-	border-radius: 50%;
-	transition: 0.2s;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet.active{
-	border-color: #d43f8d;
-	background: #d43f8d;
-}
-.sandwichDetailsContainer .orderProgress-bar .step:last-child .bullet:before,
-.sandwichDetailsContainer .orderProgress-bar .step:last-child .bullet:after{
-	display: none;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet:before,
-.sandwichDetailsContainer .orderProgress-bar .step .bullet:after{
-	position: absolute;
-	content: '';
-	bottom: 11px;
-	right: -51px;
-	height: 3px;
-	width: 44px;
-	background: #262626;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet.active:after{
-	background: #d43f8d;
-	transform: scaleX(0);
-	transform-origin: left;
-	animation: animate 0.3s linear forwards;
-}
-@keyframes animate{
-	100%{
-		transform: scaleX(1);
-	}
-
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet span{
-	font-weight: 500;
-	font-size: 17px;
-	line-height: 25px;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-}
-.sandwichDetailsContainer .orderProgress-bar .step .bullet.active span{
-	display: none;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .check{
-	position: absolute;
-	left: 50%;
-	top: 70%;
-	font-size: 15px;
-	transform: translate(-50%, -50%);
-	display: none;
-}
-.sandwichDetailsContainer .orderProgress-bar .step .check.active{
-	display: block;
-	color: #fff;
+.multisteps-form__form {
+  position: relative;
 }
 
+.multisteps-form__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.multisteps-form__panel.js-active {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+.multisteps-form__panel[data-animation="slideHorz"] {
+  left: 50px;
+}
+.multisteps-form__panel[data-animation="slideHorz"].js-active {
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.2, 1.13, 0.38, 1.43);
+  transition-delay: 0s;
+  left: 0;
+}
 /*------------------------------------------------------------------
     Slider
 -------------------------------------------------------------------*/
