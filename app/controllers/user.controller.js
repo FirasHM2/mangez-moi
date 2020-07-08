@@ -2,15 +2,31 @@ var User = require('mongoose').model('User');
 const passport = require('passport');
 
 exports.signin = function (req, res, next) {
+    console.log('req.user', req.user);
     if (!req.user) {
         const user = new User(req.body);
         req.login(user, function (err) {
             if (err) {
-                Console.log(err);
+                console.log("error msg: ", err);
             } else {
-                passport.authenticate("local")(req, res, function () {
-                    res.redirect("/");
+                passport.authenticate("local",
+                    { failureRedirect: '/signinFailure' }
+                    // function(perr, user, info) {
+                    //     console.log('perr', perr);
+                    //     console.log('info', info);
+                    //     if (info) res.json(perr);
+                    //     else res.send("success");
+                    // }
+                )(req, res, function () {
+                    res.send('success');
                 });
+                // passport.authenticate('local', {session : true}, function(err, user) {
+                //     console.log ('err', err);
+                //     console.log('req.user', req.user);
+                //     if (!user) { res.send('failure'); }
+                //     res.send('success');
+                //     // res.redirect('/');
+                //   })(req, res);
             }
         });
     }
@@ -19,10 +35,14 @@ exports.signin = function (req, res, next) {
     }
 }
 
-exports.signinWithGoogle = function(req, res, next) {
+exports.signinFailure = function (req, res) {
+    res.send('failure');
+}
+
+exports.signinWithGoogle = function (req, res, next) {
     passport.authenticate("google", { scope: ["profile"] });
 }
-exports.signinWithFacebook = function(req, res, next) {
+exports.signinWithFacebook = function (req, res, next) {
     passport.authenticate("facebook");
 }
 
@@ -30,11 +50,10 @@ exports.signup = function (req, res, next) {
     if (!req.user) {
         User.register({ name: req.body.name, email: req.body.email }, req.body.password, function (err, user) {
             if (err) {
-                res.locals.errMsg = err;
-                res.render('index');
+                res.json(err);
             } else {
                 passport.authenticate("local")(req, res, function () {
-                    res.redirect("/");
+                    res.send('success');
                 });
             }
         });
@@ -50,5 +69,5 @@ exports.signout = function (req, res) {
 }
 
 exports.renderProfile = function (req, res, next) {
-    res.render("userProfile", { });
+    res.render("userProfile", {});
 }

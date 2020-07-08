@@ -1,15 +1,19 @@
 const passport = require("passport");
+const express = require('express');
 var users = require('../controllers/user.controller');
+var requireAuth = require('../middlewares/requireAuth');
 
 module.exports = function (app) {
 
     app.route('/signin')
         .post(users.signin);
+    app.route('/signinFailure')
+        .get(users.signinFailure);
 
-    app.route('signin/google')
+    app.route('/signin/google')
         .get(users.signinWithGoogle);
         
-    app.route('signin/facebook')
+    app.route('/signin/facebook')
         .get(users.signinWithFacebook);
 
     app.route('/signup')
@@ -18,6 +22,5 @@ module.exports = function (app) {
     app.route('/signout')
         .get(users.signout);
 
-    app.route('/profile')
-        .get(users.renderProfile);
+    app.get('/profile', requireAuth, users.renderProfile);
 };

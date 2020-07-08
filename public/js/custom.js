@@ -218,20 +218,58 @@
 	$('.time').pickatime();
 
 	// updated activated state of nav bar according to current page -- ddtran :)
-	$(document).ready(function() {
+	$(document).ready(function () {
 		console.log(current_url);
 		$('.ml-auto > active').removeClass('active');
 		if (current_url == '') $("#home").addClass('active');
-		else $('#'+current_url).addClass('active');
-		// $('#signin').click(function() {
-		// 	$.post('signin', {
-		// 		'email': $('#signinForm > .email').val(),
-		// 		'password' : $('#signupForm > .password').val()
-		// 	}, function (status, data) {
-		// 		alert(status);
-		// 		console.log(status, data);
-		// 	});
-		// })
+		else $('#' + current_url).addClass('active');
+
+		$('#signin').click(function () {
+			var errMsg = '';
+			var email = $('#signinForm > .email').val();
+			var password = $('#signinForm > .password').val();
+			if (!email) {
+				errMsg = "Please input email.";
+			} else if (!password) {
+				errMsg = "Please input password.";
+			}
+			if (errMsg) {
+				$('#signinForm > .errMsg').text(errMsg);
+				return;
+			}
+			$.post('signin', {
+				'email': email,
+				'password': password
+			}, function (data, status) {
+				console.log("status", status);
+				console.log("data", data);
+				if (data == "success") {
+					alert("success in signin");
+					location.href = '/';
+				}
+				else {
+					alert("failed in signin");
+				}
+			});
+		});
+
+		$('#signup').click(function () {
+			$.post('signup', {
+				'name' : $('#signupForm > .name').val(),
+				'email': $('#signupForm > .email').val(),
+				'password': $('#signupForm > .password').val()
+			}, function (data, status) {
+				console.log("status", status);
+				console.log("data", data);
+				if (data == "success") {
+					alert("success in signup");
+					location.href = '/';
+				}
+				else {
+					alert("failed in signup");
+				}
+			});
+		});
 	});
 
 

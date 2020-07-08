@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const methodOverride = require('method-override');
 const passport = require("passport");
 const ejs = require("ejs");
@@ -17,10 +18,11 @@ module.exports = function () {
     app.use(bodyParser.json());
     app.use(methodOverride());
 
+    app.use(cookieParser());
     app.use(session({
         secret: config.secret,
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
     }));
     app.use(passport.initialize());
     app.use(passport.session());
