@@ -2,7 +2,6 @@ var User = require('mongoose').model('User');
 const passport = require('passport');
 
 exports.signin = function (req, res, next) {
-    console.log('req.user', req.user);
     if (!req.user) {
         const user = new User(req.body);
         req.login(user, function (err) {

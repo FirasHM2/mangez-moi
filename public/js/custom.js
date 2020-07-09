@@ -188,7 +188,7 @@
 	};
 
 	//STEPS BAR CLICK FUNCTION
-	DOMstrings.stepsBar.addEventListener('click', e => {
+	if (DOMstrings.stepsBar) {DOMstrings.stepsBar.addEventListener('click', e => {
 
 	  //check if click target is a step button
 	  const eventTarget = e.target;
@@ -205,10 +205,10 @@
 
 	  //open active panel
 	  setActivePanel(activeStep);
-	});
+	});}
 
 	//PREV/NEXT BTNS CLICK
-	DOMstrings.stepsForm.addEventListener('click', e => {
+	if (DOMstrings.stepsForm) {DOMstrings.stepsForm.addEventListener('click', e => {
 
 	  const eventTarget = e.target;
 
@@ -236,7 +236,7 @@
 	  setActiveStep(activePanelNum);
 	  setActivePanel(activePanelNum);
 
-	});
+	});}
 
 	//SETTING PROPER FORM HEIGHT ONLOAD
 	window.addEventListener('load', setFormHeight, false);
