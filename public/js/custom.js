@@ -314,12 +314,20 @@
 
 	$('.time').pickatime();
 
+	/* ..............................................
+		state of nav bar
+		................................................. */
+
 	// updated activated state of nav bar according to current page -- ddtran :)
 	$(document).ready(function () {
 		console.log(current_url);
 		$('.ml-auto > active').removeClass('active');
 		if (current_url == '') $("#home").addClass('active');
 		else $('#' + current_url).addClass('active');
+
+		/* ..............................................
+			state of nav bar
+			................................................. */
 
 		$('#signin').click(function () {
 			var errMsg = '';
@@ -377,6 +385,9 @@
 			});
 		});
 	});
+	/* ..............................................
+		-----
+		................................................. */
 
 
 }(jQuery));
