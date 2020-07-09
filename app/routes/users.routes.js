@@ -23,4 +23,7 @@ module.exports = function (app) {
         .get(users.signout);
 
     app.get('/profile', requireAuth, users.renderProfile);
+
+    app.route('/users')
+        .get(users.renderUsers);
 };

@@ -5,5 +5,4 @@ module.exports = function (app) {
     require('./about.routes')(app);
     require('./menu.routes')(app);
     require('./gallery.routes')(app);
-    require('./manage.routes')(app);
 };

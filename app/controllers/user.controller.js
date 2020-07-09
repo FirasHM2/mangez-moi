@@ -61,3 +61,7 @@ exports.signout = function (req, res) {
 exports.renderProfile = function (req, res, next) {
     res.render("userProfile", {});
 }
+
+exports.renderUsers = function(req, res, next) {
+    res.render("users", {});
+}
