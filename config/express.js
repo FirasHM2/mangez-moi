@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
 const methodOverride = require('method-override');
 const passport = require("passport");
 const ejs = require("ejs");
 const session = require('express-session');
 const config = require('./dev.env');
+const flash = require('connect-flash');
 
 module.exports = function () {
 
@@ -17,8 +17,8 @@ module.exports = function () {
     }));
     app.use(bodyParser.json());
     app.use(methodOverride());
+    app.use(flash());
 
-    app.use(cookieParser());
     app.use(session({
         secret: config.secret,
         resave: false,

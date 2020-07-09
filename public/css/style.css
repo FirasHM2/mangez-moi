@@ -1826,3 +1826,7 @@ blockquote {
     transition: opacity 0.2s ease-out;
 	font-size: 30px;
 }
+
+.errMsg {
+    color: red;
+}

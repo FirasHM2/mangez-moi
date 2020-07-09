@@ -1,7 +1,7 @@
 const passport = require("passport");
-const express = require('express');
 var users = require('../controllers/user.controller');
 var requireAuth = require('../middlewares/requireAuth');
+var requireAdmin = require('../middlewares/requireAdmin');
 
 module.exports = function (app) {
 

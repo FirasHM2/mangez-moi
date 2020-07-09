@@ -10,23 +10,13 @@ exports.signin = function (req, res, next) {
                 console.log("error msg: ", err);
             } else {
                 passport.authenticate("local",
-                    { failureRedirect: '/signinFailure' }
-                    // function(perr, user, info) {
-                    //     console.log('perr', perr);
-                    //     console.log('info', info);
-                    //     if (info) res.json(perr);
-                    //     else res.send("success");
-                    // }
+                    {
+                        failureRedirect: '/signinFailure',
+                        failureFlash: true
+                    }
                 )(req, res, function () {
                     res.send('success');
                 });
-                // passport.authenticate('local', {session : true}, function(err, user) {
-                //     console.log ('err', err);
-                //     console.log('req.user', req.user);
-                //     if (!user) { res.send('failure'); }
-                //     res.send('success');
-                //     // res.redirect('/');
-                //   })(req, res);
             }
         });
     }
@@ -36,7 +26,7 @@ exports.signin = function (req, res, next) {
 }
 
 exports.signinFailure = function (req, res) {
-    res.send('failure');
+    res.send(req.flash('error'));
 }
 
 exports.signinWithGoogle = function (req, res, next) {

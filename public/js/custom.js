@@ -338,32 +338,41 @@
 				'email': email,
 				'password': password
 			}, function (data, status) {
-				console.log("status", status);
-				console.log("data", data);
 				if (data == "success") {
-					alert("success in signin");
 					location.href = '/';
 				}
 				else {
-					alert("failed in signin");
+					$('#signinForm > .errMsg').text(data);
 				}
 			});
 		});
 
 		$('#signup').click(function () {
+			var errMsg = '';
+			var name = $('#signupForm > .name').val();
+			var email = $('#signupForm > .email').val();
+			var password = $('#signupForm > .password').val();
+			if (!email) {
+				errMsg = "Please input email.";
+			} else if (!password) {
+				errMsg = "Please input password.";
+			} else if (!name) {
+				errMsg = "Please input username.";
+			}
+			if (errMsg) {
+				$('#signupForm > .errMsg').text(errMsg);
+				return;
+			}
 			$.post('signup', {
 				'name' : $('#signupForm > .name').val(),
 				'email': $('#signupForm > .email').val(),
 				'password': $('#signupForm > .password').val()
 			}, function (data, status) {
-				console.log("status", status);
-				console.log("data", data);
 				if (data == "success") {
-					alert("success in signup");
 					location.href = '/';
 				}
 				else {
-					alert("failed in signup");
+					$('#signupForm > .errMsg').text(data['message']);
 				}
 			});
 		});

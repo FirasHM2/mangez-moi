@@ -11,7 +11,7 @@ var UserSchema = new Schema({
         index: true
     },
     role: {
-        type : String,
+        type: String,
         default: "user"
     },
     googleId: String,
@@ -21,9 +21,14 @@ var UserSchema = new Schema({
 UserSchema.plugin(passportLocalMongoose, {
     usernameField: "email",
     errorMessages: {
-        IncorrectPasswordError: "Password incorrect",
-        IncorrectUsernameError: "There is no account registered with that email",
-        UserExistsError: "A user with the given email is already registered"
+        MissingPasswordError: 'No password was given',
+        AttemptTooSoonError: 'Account is currently locked. Try again later',
+        TooManyAttemptsError: 'Account locked due to too many failed login attempts',
+        NoSaltValueStoredError: 'Authentication not possible. No salt value stored',
+        IncorrectPasswordError: 'Password is incorrect',
+        IncorrectUsernameError: 'Email is incorrect',
+        MissingUsernameError: 'No email was given',
+        UserExistsError: 'A user with the given email is already registered'
     }
 });
 UserSchema.plugin(findOrCreate);
