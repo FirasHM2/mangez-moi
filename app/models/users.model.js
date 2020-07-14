@@ -12,7 +12,11 @@ var UserSchema = new Schema({
     },
     role: {
         type: String,
-        default: "user"
+        default: "customer"
+    },
+    verified : {
+        type : String,
+        default : false
     },
     googleId: String,
     facebookId: String,

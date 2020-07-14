@@ -4,5 +4,6 @@ module.exports = {
     CLIENT_ID : "CLIENT_ID",
     CLIENT_SECRET: "CLIENT_SECRET",
     FB_ID: "FB_ID",
-    FB_SECRET: "FB_SECRET"
+    FB_SECRET: "FB_SECRET",
+    siteUrl: 'http://localhost:3001'
 };

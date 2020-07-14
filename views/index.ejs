@@ -458,15 +458,6 @@
 <!-- End Customer Reviews -->
 
 <script>
-	var msg = "";
-	<% if (errMsg) { %>
-		msg = '<%= errMsg %>';
-	<% } %>
-
-	if (msg != '') {
-		alert(msg);
-		location.href = '/';
-	}
 </script>
 
 <%- include("partials/footer"); -%>

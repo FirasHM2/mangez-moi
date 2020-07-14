@@ -24,16 +24,18 @@ module.exports = function () {
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 60 * 10      // session is expired after 10 minutes
+            maxAge: 1000 * 60 * 120      // session is expired after 2 hours
         }
     }));
     app.use(passport.initialize());
     app.use(passport.session());
 
     app.use(function (req, res, next) {
+        res.locals.siteUrl = config.siteUrl;
         res.locals.user = req.user;
-        res.locals.errMsg = '';
-        res.locals.current_url = req.path.split('/')[1];
+        res.locals.module = req.path.split('/')[1];
+        res.locals.controller = req.path.split('/')[2];
+        res.locals.action = req.path.split('/')[3];
         next();
     });
     app.set('views', './views');

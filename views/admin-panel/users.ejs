@@ -1,0 +1,89 @@
+<%- include("admin-header"); -%>
+
+<!-- START CONTENT -->
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">User List</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+        <p class="caption">Enable, Disable or Verify Users.</p>
+        <div class="divider"></div>
+        <!--editableTable-->
+        <div id="editableTable" class="section">
+            <div class="row">
+                <div class="col s12 m4 l3">
+                    <h4 class="header">List of users</h4>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-field="name">Name</th>
+                                <th data-field="price">Email</th>
+                                <!-- <th data-field="price">Contact</th> -->
+                                <th data-field="price">Role</th>
+                                <th data-field="price">Verified</th>
+                                <th data-field="price">Wallet</th>
+                                <th data-field="price">Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (i in users) {
+                                    var user = users[i]; %>
+                            <tr data-user='<%= user.email %>'>
+                                <td><%= user.name %></td>
+                                <td><%= user.email %></td>
+                                <!-- <td></td> -->
+                                <td><select name="role">
+                                        <option value="admin" <%= user.role == 'admin' ? 'selected' : '' %>>
+                                            Administrator</option>
+                                        <option value="customer" <%= user.role == 'customer' ? 'selected' : '' %>>
+                                            Customer
+                                        </option>
+                                    </select> </td>
+                                <td>
+                                    <% if (user.verified == 'true') { %>
+                                    <input type="checkbox" name='verified' checked = 'checked' id='<%=i%>_verified' />
+                                    <% } else { %>
+                                    <input type="checkbox" name='verified' id='<%=i%>_verified' />
+                                    <% } %>
+                                    <label for='<%=i%>_verified'></label>
+                                </td>
+                                <td>
+                                    $1234
+                                </td>
+                                <td>
+                                    <button class="btn cyan waves-effect waves-light" name = 'reset'>Reset<i
+                                            class="mdi-navigation-refresh"></i></button>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+        </div>
+    </div>
+    <!--end container-->
+
+</section>
+<!-- END CONTENT -->
+<script>
+    var siteUrl = '<%= siteUrl %>';
+</script>
+
+<%- include("admin-footer"); -%>
