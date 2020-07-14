@@ -8,6 +8,7 @@ module.exports = function() {
 
     require('../app/models/users.model');
     require('../app/models/products.model');
+    require('../app/models/categories.model');
 
     return db;
 }

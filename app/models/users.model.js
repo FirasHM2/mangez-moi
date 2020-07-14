@@ -14,7 +14,15 @@ var UserSchema = new Schema({
         type: String,
         default: "customer"
     },
+    wallet: {
+        type: Number,
+        default: 1000
+    },
     verified : {
+        type : String,
+        default : false
+    },
+    enabled : {
         type : String,
         default : false
     },

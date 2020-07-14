@@ -1,0 +1,164 @@
+<%- include("admin-header"); -%>
+
+<style>
+    .input-field div.error {
+        position: relative;
+        top: -1rem;
+        left: 0rem;
+        font-size: 0.8rem;
+        color: #FF4081;
+        -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    .input-field label.active {
+        width: 100%;
+    }
+</style>
+
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">Categories</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+        <p class="caption">Add, Edit or Remove Category Items.</p>
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <h4 class="header">Items</h4>
+            </div>
+            <div>
+                <table id="data-table-cats" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Details</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for (i in cats) {
+                            var cat = cats[i]; %>
+                        <tr data-key='<%= cat._id %>'>
+                            <td>
+                                <input value="<%= cat.name %>" id="<%= cat._id %>_name"  type="text" readonly>
+                            </td>
+                            <td>
+                                <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly>
+                            </td>
+                            <td>
+                                <select name="available">
+                                    <option value="true" <%= cat.available == 'true' ? 'selected' : '' %>>Available</option>
+                                    <option value="false" <%= cat.available == 'false' ? 'selected' : '' %>>Not Available
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- <div class="divider"></div> -->
+        <form class="formValidate" id="formValidate1" method="post" action="#" novalidate="novalidate">
+            <div class="row">
+                <div class="col s12 m4 l3">
+                    <h4 class="header">Add Item</h4>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-field="id">Name</th>
+                                <th data-field="name">Detail</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="input-field col s12">
+                                        <label for="name">name</label>
+                                        <input id="name" name='name' type="text" data-error=".errorTxt01">
+                                        <div class="errorTxt01"></div>
+                                </td>
+                                <td>
+                                    <div class="input-field col s12 ">
+                                        <label for="detail" class="">detail</label>
+                                        <input id="detail" name='detail' type="text" data-error=".errorTxt02">
+                                        <div class="errorTxt02"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-field col s12">
+                    <a class="btn cyan waves-effect waves-light right" id="add">Add
+                        <i class="mdi-content-send right"></i>
+                    </a>
+                </div>
+        </form>
+    </div>
+
+    <div class="divider"></div>
+
+    </div>
+    <!--end container-->
+
+</section>
+
+<script>
+    var siteUrl = '<%= siteUrl %>';
+</script>
+
+<%- include("admin-footer"); -%>
+
+<script>
+    $("#formValidate1").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 5,
+                maxlength: 20
+            },
+            detail: {
+                required: true
+            },
+        },
+        messages: {
+            name: {
+                required: "Enter item name",
+                minlength: "Minimum length is 5 characters",
+                maxlength: "Maximum length is 20 characters"
+            },
+            detail: {
+                required: "Enter item detail"
+            },
+        },
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+</script>

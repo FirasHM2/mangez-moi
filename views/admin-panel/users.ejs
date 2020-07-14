@@ -34,9 +34,10 @@
                                 <th data-field="price">Email</th>
                                 <!-- <th data-field="price">Contact</th> -->
                                 <th data-field="price">Role</th>
-                                <th data-field="price">Verified</th>
                                 <th data-field="price">Wallet</th>
                                 <th data-field="price">Password</th>
+                                <th data-field="price">Verified</th>
+                                <th data-field="price">Enabled</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,26 +48,34 @@
                                 <td><%= user.email %></td>
                                 <!-- <td></td> -->
                                 <td><select name="role">
-                                        <option value="admin" <%= user.role == 'admin' ? 'selected' : '' %>>
-                                            Administrator</option>
-                                        <option value="customer" <%= user.role == 'customer' ? 'selected' : '' %>>
-                                            Customer
+                                        <option value="admin" <%= user.role == 'admin' ? 'selected' : '' %>>Administrator</option>
+                                        <option value="customer" <%= user.role == 'customer' ? 'selected' : '' %>>Customer
                                         </option>
                                     </select> </td>
+
+                                <td>
+                                    <label for="wallet"></label>
+                                    <input id="<%= user.email %>_wallet" name="wallet" value="<%= user.wallet %>" type="number" step = 10 min = 0 max = 5000 data-error=".errorTxt01">
+                                    <div class="errorTxt01"></div>
+                                </td>
+                                <td>
+                                    <button class="btn cyan waves-effect waves-light" name='reset'>Reset<i class="mdi-navigation-refresh"></i></button>
+                                </td>
                                 <td>
                                     <% if (user.verified == 'true') { %>
-                                    <input type="checkbox" name='verified' checked = 'checked' id='<%=i%>_verified' />
+                                    <input type="checkbox" name='verified' checked='checked' id='<%=i%>_verified' />
                                     <% } else { %>
                                     <input type="checkbox" name='verified' id='<%=i%>_verified' />
                                     <% } %>
                                     <label for='<%=i%>_verified'></label>
                                 </td>
                                 <td>
-                                    $1234
-                                </td>
-                                <td>
-                                    <button class="btn cyan waves-effect waves-light" name = 'reset'>Reset<i
-                                            class="mdi-navigation-refresh"></i></button>
+                                    <% if (user.enabled == 'true') { %>
+                                    <input type="checkbox" name='enabled' checked='checked' id='<%=i%>_enabled' />
+                                    <% } else { %>
+                                    <input type="checkbox" name='enabled' id='<%=i%>_enabled' />
+                                    <% } %>
+                                    <label for='<%=i%>_enabled'></label>
                                 </td>
                             </tr>
                             <% } %>
