@@ -59,3 +59,7 @@ $('button[name="reset"]').click(function () {
         }
     });
 })
+
+$(document).ready(function() {
+    
+})

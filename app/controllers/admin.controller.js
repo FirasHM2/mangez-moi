@@ -12,7 +12,7 @@ exports.render = function (req, res) {
 
 exports.userList = function(req, res) {
     Users.find({}, function(err, users) {
-        res.render('admin-panel/users', {users:users});
+        res.render('admin-panel/users', {active:'users', users:users});
     });
 }
 
@@ -59,7 +59,7 @@ exports.resetPassword = function(req, res) {
 
 exports.categoryList = function(req, res) {
     Cats.find({}, function(err, cats) {
-        res.render('admin-panel/categories', {cats:cats});
+        res.render('admin-panel/categories', {active:'menu', cats:cats});
     });
 }
 exports.addCategory = function(req, res) {
