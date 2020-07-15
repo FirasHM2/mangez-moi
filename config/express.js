@@ -23,9 +23,9 @@ module.exports = function () {
         secret: config.secret,
         resave: false,
         saveUninitialized: false,
-        cookie: {
-            maxAge: 1000 * 60 * 120      // session is expired after 2 hours
-        }
+        // cookie: {
+        //     maxAge: 1000 * 60 * 120      // session is expired after 2 hours
+        // }
     }));
     app.use(passport.initialize());
     app.use(passport.session());

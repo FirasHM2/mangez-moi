@@ -29,6 +29,7 @@
     rel="stylesheet" media="screen,projection">
   <link href="<%=siteUrl%>/admin-panel/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css"
     rel="stylesheet" media="screen,projection">
+  <link href="<%=siteUrl%>/sweetalert2/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 
 <body>
@@ -101,7 +102,7 @@
           </li>
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-              <li class="bold"><a href="#" class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i>
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'orders' ? 'active' : ''%>"><i class="mdi-editor-insert-invitation"></i>
                   Orders</a>
                 <div class="collapsible-body">
                   <ul>
@@ -116,12 +117,12 @@
           </li>
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-              <li class="bold <%= active == 'menu' ? 'active' : ''%>"><a class="collapsible-header waves-effect waves-cyan"><i
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'menu' ? 'active' : ''%>"><i
                     class="mdi-maps-restaurant-menu"></i> Menu</a>
-                <div class="collapsible-body" style = '<%= active == "menu" ? "display: block" : ""%>'>
+                <div class="collapsible-body">
                   <ul>
                     <li class="<%=controller == 'categories' ? 'active' : ''%>"><a href="/admin-panel/categories" class="waves-effect waves-cyan">Categories</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Products</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan <%=controller == 'products' ? 'active' : ''%>">Products</a></li>
                   </ul>
                 </div>
               </li>
@@ -129,10 +130,11 @@
           </li>
           <li class="no-padding">
               <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'details' ? 'active' : ''%>"><i
                       class="mdi-image-details"></i> Details</a>
                   <div class="collapsible-body">
                     <ul>
+                      <li class="<%=controller == 'breads' ? 'active' : ''%>"><a href="/admin-panel/breads" class="waves-effect waves-cyan">Breads</a></li>
                       <li><a href="#" class="waves-effect waves-cyan">Ingredients</a></li>
                       <li><a href="#" class="waves-effect waves-cyan">Sauces</a></li>
                       <li><a href="#" class="waves-effect waves-cyan">Supplements</a></li>
@@ -145,7 +147,7 @@
             </li>
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-              <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'tickets' ? 'active' : ''%>"><i
                     class="mdi-action-question-answer"></i> Tickets</a>
                 <div class="collapsible-body">
                   <ul>
@@ -158,7 +160,7 @@
           </li>
           <li class="no-padding">
               <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'statistics' ? 'active' : ''%>"><i
                       class="mdi-editor-insert-chart"></i> Statistics</a>
                   <div class="collapsible-body">
                     <ul>

@@ -15,9 +15,6 @@
     .input-field label.active {
         width: 100%;
     }
-    input[type="text"]:disabled {
-        color: rgba(0, 0, 0, 0.87) !important
-    }
 </style>
 
 <section id="content">
@@ -27,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Categories</h5>
+                    <h5 class="breadcrumbs-title">Indregients</h5>
                 </div>
             </div>
         </div>
@@ -42,40 +39,41 @@
 
         <div class="row">
             <div class="col s12 m4 l3">
-                <h4 class="header">Items</h4>
+                <label for = 'category'>Ingredients for</label>
+                <select name = 'category' id = 'category'>
+                    <% for (i in cats) {
+                        cat = cats[i];
+                        %>
+                        <option value="<%= cat.name %>"><%=cat.name%></option>
+                    <% } %>
+                </select>
             </div>
             <div>
-                <table id="data-table-cats" class="responsive-table display" cellspacing="0">
+                <table id="data-table-ings" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Details</th>
+                            <th>Price</th>
                             <th>Available</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% for (i in cats) {
-                            var cat = cats[i]; %>
-                        <tr data-key='<%= cat._id %>' id='<%= cat._id %>'>
+                        <% for (i in ingredients) {
+                            var ing = ingredients[i]; %>
+                        <tr data-key='<%= ing._id %>'>
                             <td>
-                                <input value="<%= cat.name %>" id="<%= cat._id %>_name"   type="text" readonly="true">
+                                <input value="<%= ing.name %>" id="<%= ing._id %>_name"  type="text" readonly>
                             </td>
                             <td>
-                                <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly="true">
+                                <input value="<%= ing.price %>" id="<%= ing._id %>_detail"  type="text" readonly>
                             </td>
                             <td>
                                 <select name="available">
-                                    <option value="true" <%= cat.available == 'true' ? 'selected' : '' %>>Available</option>
-                                    <option value="false" <%= cat.available == 'false' ? 'selected' : '' %>>Not Available
+                                    <option value="true" <%= ing.available == 'true' ? 'selected' : '' %>>Available</option>
+                                    <option value="false" <%= ing.available == 'false' ? 'selected' : '' %>>Not Available
                                     </option>
                                 </select>
-                            </td>
-                            <td>
-                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
-                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
-                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
                             </td>
                         </tr>
                         <% } %>
@@ -95,7 +93,7 @@
                         <thead>
                             <tr>
                                 <th data-field="id">Name</th>
-                                <th data-field="name">Detail</th>
+                                <th data-field="name">Price</th>
                             </tr>
                         </thead>
 
@@ -109,8 +107,8 @@
                                 </td>
                                 <td>
                                     <div class="input-field col s12 ">
-                                        <label for="detail" class="">detail</label>
-                                        <input id="detail" name='detail' type="text" data-error=".errorTxt02">
+                                        <label for="price" class="">Price</label>
+                                        <input id="price" name='price' type="text" data-error=".errorTxt02">
                                         <div class="errorTxt02"></div>
                                 </td>
                             </tr>
@@ -148,8 +146,9 @@
                 minlength: 5,
                 maxlength: 20
             },
-            detail: {
-                required: true
+            price: {
+                required: true,
+                number : true
             },
         },
         messages: {
