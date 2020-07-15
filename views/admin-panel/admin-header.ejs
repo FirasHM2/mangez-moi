@@ -121,24 +121,36 @@
                 <div class="collapsible-body" style = '<%= active == "menu" ? "display: block" : ""%>'>
                   <ul>
                     <li class="<%=controller == 'categories' ? 'active' : ''%>"><a href="/admin-panel/categories" class="waves-effect waves-cyan">Categories</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Ingredients</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Sauces</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Supplements</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Fruites and drinks</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Desserts</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">Products</a></li>
                   </ul>
                 </div>
               </li>
             </ul>
           </li>
           <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
+                      class="mdi-image-details"></i> Details</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#" class="waves-effect waves-cyan">Ingredients</a></li>
+                      <li><a href="#" class="waves-effect waves-cyan">Sauces</a></li>
+                      <li><a href="#" class="waves-effect waves-cyan">Supplements</a></li>
+                      <li><a href="#" class="waves-effect waves-cyan">Frites and drinks</a></li>
+                      <li><a href="#" class="waves-effect waves-cyan">Desserts</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
               <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i
-                    class="mdi-action-question-answer"></i> Messages</a>
+                    class="mdi-action-question-answer"></i> Tickets</a>
                 <div class="collapsible-body">
                   <ul>
-                    <li><a href="#" class="waves-effect waves-cyan">All messages</a></li>
-                    <li><a href="#" class="waves-effect waves-cyan">Answered messages</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">All Tickets</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">Answered Tickets</a></li>
                   </ul>
                 </div>
               </li>
@@ -157,9 +169,7 @@
                 </li>
               </ul>
             </li>
-          <li class="bold"><a href="/admin-panel/users" class="waves-effect waves-cyan"><i
-                class="mdi-social-person"></i>
-              Users</a></li>
+          <li class="bold <%= active == 'users' ? 'active' : ''%>"><a href="/admin-panel/users" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a></li>
         </ul>
         <a href="#" data-activates="slide-out"
           class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i
