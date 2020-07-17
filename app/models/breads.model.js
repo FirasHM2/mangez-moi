@@ -4,6 +4,7 @@ var mongoose = require("mongoose"),
 
 var BreadSchema = new Schema({
     category : String,
+    id : String,
     name: {
         type: String,
         index: true
@@ -13,6 +14,11 @@ var BreadSchema = new Schema({
         type : String,
         default : false
     }
+});
+
+BreadSchema.pre('save', function(next) {
+    this.id = new mongoose.Types.ObjectId().toHexString();
+    next();
 });
 
 BreadSchema.plugin(findOrCreate);

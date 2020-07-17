@@ -22,6 +22,7 @@ module.exports = function (app) {
     app.get('/admin-panel/breads', requireAdmin, breads.breadsList);
     app.post('/admin-panel/breads/add', requireAdmin, breads.addBread);
     app.post('/admin-panel/breads/update', requireAdmin, breads.updateBread);
+    app.post('/admin-panel/breads/delete', requireAdmin, breads.deleteBread);
 
     app.get('/admin-panel/ingredients', requireAdmin, ingredients.getList);
     app.post('/admin-panel/ingredients/add', requireAdmin, ingredients.add);

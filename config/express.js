@@ -31,6 +31,7 @@ module.exports = function () {
     app.use(passport.session());
 
     app.use(function (req, res, next) {
+        req.user = {name:"po", role:"admin"};
         res.locals.siteUrl = config.siteUrl;
         res.locals.user = req.user;
         res.locals.module = req.path.split('/')[1];

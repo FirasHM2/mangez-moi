@@ -1,8 +1,9 @@
 var Breads = require('mongoose').model('Bread');
+var Cats = require('mongoose').model('Category');
 
 exports.breadsList = function(req, res) {
-    Breads.find({}, (err, cats) => cats
-    ).then((cats) => {
+    Cats.find({}, (err, cats) => cats)
+    .then((cats) => {
         Breads.find({}, (err, breads) => {
             res.render('admin-panel/details/breads', {active:'details', breads:breads, cats:cats});
         });
@@ -11,17 +12,18 @@ exports.breadsList = function(req, res) {
 
 exports.addBread = function(req, res) {
     let data = req.body.data;
-
+    console.log("data", data);
     Breads.findOne({
+        'category': data.category,
         'name': data.name
-    }, function(err, cat) {
+    }, function(err, bread) {
         if (err) {
             res.status(500).send(err);
             return;
         }
-        if (!cat) {
+        if (!bread) {
             bread = new Breads({
-                category: data.categoryId,
+                category: data.category,
                 name: data.name,
                 price: data.price
             });
@@ -31,8 +33,9 @@ exports.addBread = function(req, res) {
                     return;
                 }
                 res.send(bread._id);
+                return;
             });
-        }
+        } else res.send("already_exist");
     });
 }
 
@@ -44,6 +47,21 @@ exports.updateBread = function(req, res) {
         return;
     }
     Breads.updateOne({_id: _id}, {$set:data}, (err) => {
+        if (err) {
+            res.status(501).send(err);
+            return;
+        }
+        res.send("Success");
+    });
+}
+
+exports.deleteBread = function(req, res) {
+    let _id = req.body._id;
+    if (!_id) {
+        res.status(500).send('No Selected');
+        return;
+    }
+    Breads.findOneAndRemove({_id: _id}, (err, bread) => {
         if (err) {
             res.status(501).send(err);
             return;

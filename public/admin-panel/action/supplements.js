@@ -174,9 +174,6 @@ $('button[name="update"]').click(function () {
     $(this).parent().parent().find("input[readonly]").each(function() {
         $(this).prop('readonly', false);
     });
-    $(this).parent().parent().find("span[disabled]").each(function() {
-        $(this).removeClass('disabled');
-    });
 
 });
 

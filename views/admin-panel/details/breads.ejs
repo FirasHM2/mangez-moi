@@ -15,6 +15,9 @@
     .input-field label.active {
         width: 100%;
     }
+    .dataTables_filter {
+        display: none
+    }
 </style>
 
 <section id="content">
@@ -38,13 +41,12 @@
         <div class="divider"></div>
 
         <div class="row">
-            <div class="col s12 m4 l3">
-                <label for = 'category'>Breads for</label>
-                <select name = 'category' id = 'category'>
-                    <% for (i in cats) {
-                        cat = cats[i];
-                        %>
-                        <option value="<%= cat.name %>"><%=cat.name%></option>
+            <div class='col s4 m4 l4'>
+                <label for = "categoryId">Breads for</label>
+                <select name = 'category' id = "categoryId" readonly>
+                    <% for(j in cats) {
+                        let cat = cats[j]; %>
+                    <option value="<%= cat.id%>"><%= cat.name%></option>
                     <% } %>
                 </select>
             </div>
@@ -55,25 +57,37 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Available</th>
+                            <th>Action</th>
+                            <th>Category</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <% for (i in breads) {
                             var bread = breads[i]; %>
-                        <tr data-key='<%= bread._id %>'>
+                        <tr data-key='<%= bread._id %>' id = '<%= bread._id %>'>
                             <td>
                                 <input value="<%= bread.name %>" id="<%= bread._id %>_name"  type="text" readonly>
                             </td>
                             <td>
-                                <input value="<%= bread.price %>" id="<%= bread._id %>_price"  type="text" readonly>
+                                <input value="<%= bread.price %>" id="<%= bread._id %>_price"  type="number" readonly>
                             </td>
                             <td>
-                                <select name="available">
-                                    <option value="true" <%= bread.available == 'true' ? 'selected' : '' %>>Available</option>
-                                    <option value="false" <%= bread.available == 'false' ? 'selected' : '' %>>Not Available
-                                    </option>
-                                </select>
+                                <% if (bread.available == 'true') { %>
+                                    <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
+                                    <label for='<%=i%>_available'>Available</label>
+                                <% } else { %>
+                                    <input type="checkbox" name='available' id='<%=i%>_available' />
+                                    <label for='<%=i%>_available'>Not Available</label>
+                                <% } %>
+                            </td>
+                            <td>
+                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                            </td>
+                            <td>
+                                <%= bread.category %>
                             </td>
                         </tr>
                         <% } %>
@@ -92,8 +106,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th data-field="id">Name</th>
-                                <th data-field="name">Price</th>
+                                <th>Name</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
 
@@ -102,14 +116,17 @@
                                 <td>
                                     <div class="input-field col s12">
                                         <label for="name">name</label>
-                                        <input id="name" name='name' type="text" data-error=".errorTxt01">
-                                        <div class="errorTxt01"></div>
+                                        <input id="name" name='name' type="text" data-error=".errorTxt01"/>
+                                        <div class="errorTxt01">
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="input-field col s12 ">
                                         <label for="price" class="">Price</label>
-                                        <input id="price" name='price' type="text" data-error=".errorTxt02">
+                                        <input id="price" name='price' type="text" data-error=".errorTxt02"/>
                                         <div class="errorTxt02"></div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
