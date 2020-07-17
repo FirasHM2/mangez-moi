@@ -78,13 +78,13 @@ $("#add").on('click', function() {
             
             var _id = $(this).parent().parent().attr('data-key');
             var name = $(this).parent().prev().prev().prev().children().val();
-            var detail = $(this).parent().prev().prev().children().val();
+            var price = $(this).parent().prev().prev().children().val();
         
             $.post(siteUrl + '/admin-panel/supplements/update', {
                 _id: _id,
                 data: {
                     name: name,
-                    detail: detail
+                    price: price
                 }
             }, function (data) {
                 if (data == "Success") {

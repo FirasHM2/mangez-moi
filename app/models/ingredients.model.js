@@ -2,7 +2,11 @@ var mongoose = require("mongoose"),
     Schema = mongoose.Schema,
     findOrCreate = require("mongoose-findorcreate");
 
-var IngreSchema = new Schema({
+var IngredientSchema = new Schema({
+    id: {
+        type: String,
+        default: ''
+    },
     name: {
         type: String,
         index: true
@@ -14,7 +18,12 @@ var IngreSchema = new Schema({
     }
 });
 
-IngreSchema.plugin(findOrCreate);
+IngredientSchema.pre('save', function(next) {
+    this.id = new mongoose.Types.ObjectId().toHexString();
+    next();
+});
 
-var Ingredient = mongoose.model("Ingredient", IngreSchema);
+IngredientSchema.plugin(findOrCreate);
+
+var Ingredient = mongoose.model("Ingredient", IngredientSchema);
 module.exports = Ingredient;
