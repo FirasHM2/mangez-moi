@@ -66,11 +66,13 @@
                                 <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly="true">
                             </td>
                             <td>
-                                <select name="available">
-                                    <option value="true" <%= cat.available == 'true' ? 'selected' : '' %>>Available</option>
-                                    <option value="false" <%= cat.available == 'false' ? 'selected' : '' %>>Not Available
-                                    </option>
-                                </select>
+                                <% if (cat.available == 'true') { %>
+                                <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Available</label>
+                                <% } else { %>
+                                <input type="checkbox" name='available' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Not Available</label>
+                                <% } %>
                             </td>
                             <td>
                                 <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>

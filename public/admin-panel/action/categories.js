@@ -25,24 +25,13 @@ $("#add").on('click', function() {
             return;
         }
 
-        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly="true">', '<input value="' + $("#detail").val() + '" type="text" readonly="true">', '<select name="available"><option value="true">Available</option><option value="false" selected>Not Available</option></select>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button><button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button><button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>']).draw().node();
+        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly="true">', '<input value="' + $("#detail").val() + '" type="text" readonly="true">', '<input type="checkbox" name="available" id="'+id+'_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button><button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button><button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>']).draw().node();
         $(nRow).attr('data-key', id);
         $(nRow).attr('id', id);
-        $("select:not(.initialized)").on('change', function () {
-            var _id = $(this).parent().parent().parent().attr('data-key');
-            $.post(siteUrl + '/admin-panel/categories/update', {
-                _id: _id,
-                data: {
-                    available: $(this).val(),
-                },
-            }, function (data) {
-                Materialize.toast('Successfully changed!', 2000, "green");
-            });
-        });
-        $("select:not(.initialized)").material_select();
+
         $('button[name="save"]').hide();
 
-        $('button[name="delete"]').click(function () {
+        $(nRow).$('button[name="delete"]').click(function () {
             var _id = $(this).parent().parent().attr('data-key');
             Swal.fire({
                 title: 'Confirm!',
@@ -73,7 +62,7 @@ $("#add").on('click', function() {
         
         });
         
-        $('button[name="update"]').click(function () {
+        $(nRow).$('button[name="update"]').click(function () {
             var _id = $(this).parent().parent().attr('data-key');
             $(this).hide();
             $(this).next().show();
@@ -84,7 +73,7 @@ $("#add").on('click', function() {
         
         });
         
-        $('button[name="save"]').click(function () {
+        $(nRow).$('button[name="save"]').click(function () {
             
             var _id = $(this).parent().parent().attr('data-key');
             var name = $(this).parent().prev().prev().prev().children().val();
@@ -108,23 +97,41 @@ $("#add").on('click', function() {
             $($(this).parent().parent().find("input")[1]).prop('readonly', true);
         });
 
+        $(nRow).$('input[name="available"]').change(function () {
+            var _id = $(this).parent().parent().attr('data-key');
+            var label = $($(this)[0]).next();
+            $.post(siteUrl + '/admin-panel/categories/update', {
+                _id: _id,
+                data: {
+                    available: $(this)[0].checked,
+                },
+            }, function (data) {
+                if ($(label).text() == "Available") $(label).text('Not Available');
+                else $(label).text('Available');
+                Materialize.toast('Successfully updated!', 2000, "green");
+            });    
+        });
+
         Materialize.toast('Successfully added!', 2000, "green");
         $("#name").val('');
         $("#detail").val('');
     }); 
 });
 
-// $('select[name="available"]').on('change', function () {
-//     var _id = $(this).parent().parent().parent().attr('data-key');
-//     $.post(siteUrl + '/admin-panel/categories/update', {
-//         _id: _id,
-//         data: {
-//             available: $(this).val(),
-//         },
-//     }, function (data) {
-//         Materialize.toast('Successfully changed!', 2000, "green");
-//     });
-// });
+$('input[name="available"]').change(function () {
+    var _id = $(this).parent().parent().attr('data-key');
+    var label = $($(this)[0]).next();
+    $.post(siteUrl + '/admin-panel/categories/update', {
+        _id: _id,
+        data: {
+            available: $(this)[0].checked,
+        },
+    }, function (data) {
+        if ($(label).text() == "Available") $(label).text('Not Available');
+        else $(label).text('Available');
+        Materialize.toast('Successfully updated!', 2000, "green");
+    });    
+});
 
 $('button[name="delete"]').click(function () {
     var _id = $(this).parent().parent().attr('data-key');
