@@ -2,7 +2,7 @@ var $table;
 
 $(document).ready(function() {
     $('button[name="save"]').hide();
-    $table = $('#data-table-cats').DataTable({
+    $table = $('#data-table').DataTable({
         searching: false,
         ordering: false,
         paging: false,
@@ -10,10 +10,10 @@ $(document).ready(function() {
 });
 
 $("#add").on('click', function() {
-     $.post(siteUrl + '/admin-panel/categories/add', {
+     $.post(siteUrl + '/admin-panel/sauces/add', {
         data: {
             name: $("#name").val(),
-            detail: $("#detail").val()
+            price: $("#price").val()
         }
     }, function(id) {
         if (id === 'already_exist') {
@@ -25,13 +25,14 @@ $("#add").on('click', function() {
             return;
         }
 
-        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly="true">', '<input value="' + $("#detail").val() + '" type="text" readonly="true">', '<input type="checkbox" name="available" id="'+id+'_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button><button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button><button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>']).draw().node();
+        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly="true">', '<input value="' + $("#price").val() + '" type="number" readonly="true">', '<input type="checkbox" name="available" id="'+id+'_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button><button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button><button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>']).draw().node();
         $(nRow).attr('data-key', id);
         $(nRow).attr('id', id);
 
         $('button[name="save"]').hide();
 
         $($(nRow).find('button[name="delete"]')[0]).click(function () {
+            console.log($(this));
             var _id = $(this).parent().parent().attr('data-key');
             Swal.fire({
                 title: 'Confirm!',
@@ -97,6 +98,7 @@ $("#add").on('click', function() {
             $($(this).parent().parent().find("input")[1]).prop('readonly', true);
         });
 
+        
         $($(nRow).find('input[name="available"]')[0]).change(function () {
             var _id = $(this).parent().parent().attr('data-key');
             var label = $($(this)[0]).next();
@@ -114,14 +116,14 @@ $("#add").on('click', function() {
 
         Materialize.toast('Successfully added!', 2000, "green");
         $("#name").val('');
-        $("#detail").val('');
+        $("#price").val('');
     }); 
 });
 
 $('input[name="available"]').change(function () {
     var _id = $(this).parent().parent().attr('data-key');
     var label = $($(this)[0]).next();
-    $.post(siteUrl + '/admin-panel/categories/update', {
+    $.post(siteUrl + '/admin-panel/sauces/update', {
         _id: _id,
         data: {
             available: $(this)[0].checked,
@@ -145,7 +147,7 @@ $('button[name="delete"]').click(function () {
         confirmButtonText: 'Sure'
     }).then(function (result) {
         if (result.value) {
-            $.post(siteUrl + '/admin-panel/categories/delete', {
+            $.post(siteUrl + '/admin-panel/sauces/delete', {
                 _id: _id,
             }, function (data) {
                 if (data == "Success") {
@@ -182,13 +184,13 @@ $('button[name="save"]').click(function () {
     
     var _id = $(this).parent().parent().attr('data-key');
     var name = $(this).parent().prev().prev().prev().children().val();
-    var detail = $(this).parent().prev().prev().children().val();
+    var price = $(this).parent().prev().prev().children().val();
 
-    $.post(siteUrl + '/admin-panel/categories/update', {
+    $.post(siteUrl + '/admin-panel/sauces/update', {
         _id: _id,
         data: {
             name: name,
-            detail: detail
+            price: price
         }
     }, function (data) {
         if (data == "Success") {

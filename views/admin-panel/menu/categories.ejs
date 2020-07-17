@@ -1,4 +1,4 @@
-<%- include("admin-header"); -%>
+<%- include("../admin-header"); -%>
 
 <style>
     .input-field div.error {
@@ -15,6 +15,9 @@
     .input-field label.active {
         width: 100%;
     }
+    input[type="text"]:disabled {
+        color: rgba(0, 0, 0, 0.87) !important
+    }
 </style>
 
 <section id="content">
@@ -24,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Indregients</h5>
+                    <h5 class="breadcrumbs-title">Categories</h5>
                 </div>
             </div>
         </div>
@@ -39,41 +42,42 @@
 
         <div class="row">
             <div class="col s12 m4 l3">
-                <label for = 'category'>Breads for</label>
-                <select name = 'category' id = 'category'>
-                    <% for (i in cats) {
-                        cat = cats[i];
-                        %>
-                        <option value="<%= cat.name %>"><%=cat.name%></option>
-                    <% } %>
-                </select>
+                <h4 class="header">Items</h4>
             </div>
             <div>
-                <table id="data-table-breads" class="responsive-table display" cellspacing="0">
+                <table id="data-table-cats" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Price</th>
+                            <th>Details</th>
                             <th>Available</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% for (i in breads) {
-                            var bread = breads[i]; %>
-                        <tr data-key='<%= bread._id %>'>
+                        <% for (i in cats) {
+                            var cat = cats[i]; %>
+                        <tr data-key='<%= cat._id %>' id='<%= cat._id %>'>
                             <td>
-                                <input value="<%= bread.name %>" id="<%= bread._id %>_name"  type="text" readonly>
+                                <input value="<%= cat.name %>" id="<%= cat._id %>_name"   type="text" readonly="true">
                             </td>
                             <td>
-                                <input value="<%= bread.price %>" id="<%= bread._id %>_detail"  type="text" readonly>
+                                <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly="true">
                             </td>
                             <td>
-                                <select name="available">
-                                    <option value="true" <%= bread.available == 'true' ? 'selected' : '' %>>Available</option>
-                                    <option value="false" <%= bread.available == 'false' ? 'selected' : '' %>>Not Available
-                                    </option>
-                                </select>
+                                <% if (cat.available == 'true') { %>
+                                <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Available</label>
+                                <% } else { %>
+                                <input type="checkbox" name='available' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Not Available</label>
+                                <% } %>
+                            </td>
+                            <td>
+                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
                             </td>
                         </tr>
                         <% } %>
@@ -93,7 +97,7 @@
                         <thead>
                             <tr>
                                 <th data-field="id">Name</th>
-                                <th data-field="name">Price</th>
+                                <th data-field="name">Detail</th>
                             </tr>
                         </thead>
 
@@ -107,8 +111,8 @@
                                 </td>
                                 <td>
                                     <div class="input-field col s12 ">
-                                        <label for="price" class="">Price</label>
-                                        <input id="price" name='price' type="text" data-error=".errorTxt02">
+                                        <label for="detail" class="">detail</label>
+                                        <input id="detail" name='detail' type="text" data-error=".errorTxt02">
                                         <div class="errorTxt02"></div>
                                 </td>
                             </tr>
@@ -136,7 +140,7 @@
     console.log('controller', '<%= controller %>');
 </script>
 
-<%- include("admin-footer"); -%>
+<%- include("../admin-footer"); -%>
 
 <script>
     $("#formValidate1").validate({
@@ -146,9 +150,8 @@
                 minlength: 5,
                 maxlength: 20
             },
-            price: {
-                required: true,
-                number : true
+            detail: {
+                required: true
             },
         },
         messages: {

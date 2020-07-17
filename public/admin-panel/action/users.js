@@ -6,6 +6,7 @@ $('select[name="role"]').change(function () {
             role: $(this).val(),
         },
     }, function (data) {
+        Materialize.toast('Successfully updated!', 2000, "green");
     });
 });
 
@@ -18,7 +19,7 @@ $('input[name="verified"]').change(function () {
             verified: $(this)[0].checked,
         },
     }, function (data) {
-
+        Materialize.toast('Successfully updated!', 2000, "green");
     });
 });
 
@@ -31,7 +32,7 @@ $('input[name="wallet"]').change(function () {
             wallet: $(this).val(),
         },
     }, function (data) {
-
+        Materialize.toast('Successfully updated!', 2000, "green");
     });
 });
 
@@ -44,7 +45,7 @@ $('input[name="enabled"]').change(function () {
             enabled: $(this)[0].checked,
         },
     }, function (data) {
-
+        Materialize.toast('Successfully updated!', 2000, "green");
     });
 });
 
@@ -64,17 +65,10 @@ $('button[name="reset"]').click(function () {
                 email: email,
             }, function (data) {
                 if (data == "Success") {
-                    Swal.fire({
-                        title:'Success',
-                        text: 'password of ' + email + ' was reset to 123456',
-                        icon:'success'
-                    });
+                    Materialize.toast('Successfully reseted to "123456!"', 2000, "green");
                 }
             });
         }
     });
 
 });
-$(document).ready(function () {
-
-})

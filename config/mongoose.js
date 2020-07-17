@@ -11,6 +11,7 @@ module.exports = function() {
     require('../app/models/categories.model');
     require('../app/models/breads.model');
     require('../app/models/ingredients.model');
+    require('../app/models/sauces.model');
 
     return db;
 }

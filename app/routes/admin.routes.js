@@ -1,23 +1,32 @@
-var admin = require('../controllers/admin.controller');
+var users = require('../controllers/admin-panel/users.controller');
+var sauces = require('../controllers/admin-panel/sauces.controller');
+var cats = require('../controllers/admin-panel/categories.controller');
+var breads = require('../controllers/admin-panel/breads.controller');
+var ingredients = require('../controllers/admin-panel/ingredients.controller');
 var requireAdmin = require('../middlewares/requireAdmin');
 
 module.exports = function (app) {
-    app.get('/admin-panel', requireAdmin, admin.render);
+    app.get('/admin-panel', requireAdmin, users.render);
 
-    app.get('/admin-panel/users', requireAdmin, admin.userList);
-    app.post('/admin-panel/users/update', requireAdmin, admin.updateUser);
-    app.post('/admin-panel/users/reset', requireAdmin, admin.resetPassword);
+    app.get('/admin-panel/users', requireAdmin, users.userList);
+    app.post('/admin-panel/users/update', requireAdmin, users.updateUser);
+    app.post('/admin-panel/users/reset', requireAdmin, users.resetPassword);
 
-    app.get('/admin-panel/categories', requireAdmin, admin.categoryList);
-    app.post('/admin-panel/categories/add', requireAdmin, admin.addCategory);
-    app.post('/admin-panel/categories/update', requireAdmin, admin.updateCategory);
-    app.post('/admin-panel/categories/delete', requireAdmin, admin.deleteCategory);
+    app.get('/admin-panel/categories', requireAdmin, cats.categoryList);
+    app.post('/admin-panel/categories/add', requireAdmin, cats.addCategory);
+    app.post('/admin-panel/categories/update', requireAdmin, cats.updateCategory);
+    app.post('/admin-panel/categories/delete', requireAdmin, cats.deleteCategory);
 
-    app.get('/admin-panel/breads', requireAdmin, admin.breadsList);
-    app.post('/admin-panel/breads/add', requireAdmin, admin.addBread);
-    app.post('/admin-panel/breads/update', requireAdmin, admin.updateBread);
+    app.get('/admin-panel/breads', requireAdmin, breads.breadsList);
+    app.post('/admin-panel/breads/add', requireAdmin, breads.addBread);
+    app.post('/admin-panel/breads/update', requireAdmin, breads.updateBread);
 
-    app.get('/admin-panel/ingredients', requireAdmin, admin.ingredientsList);
-    app.post('/admin-panel/ingredients/add', requireAdmin, admin.addIngredient);
-    app.post('/admin-panel/ingredients/update', requireAdmin, admin.updateIngredient);
+    app.get('/admin-panel/ingredients', requireAdmin, ingredients.ingredientsList);
+    app.post('/admin-panel/ingredients/add', requireAdmin, ingredients.addIngredient);
+    app.post('/admin-panel/ingredients/update', requireAdmin, ingredients.updateIngredient);
+
+    app.get('/admin-panel/sauces', requireAdmin, sauces.getList);
+    app.post('/admin-panel/sauces/add', requireAdmin, sauces.add);
+    app.post('/admin-panel/sauces/update', requireAdmin, sauces.update);
+    app.post('/admin-panel/sauces/delete', requireAdmin, sauces.delete);
 };

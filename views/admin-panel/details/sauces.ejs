@@ -1,4 +1,4 @@
-<%- include("admin-header"); -%>
+<%- include("../admin-header"); -%>
 
 <style>
     .input-field div.error {
@@ -15,9 +15,6 @@
     .input-field label.active {
         width: 100%;
     }
-    input[type="text"]:disabled {
-        color: rgba(0, 0, 0, 0.87) !important
-    }
 </style>
 
 <section id="content">
@@ -27,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Categories</h5>
+                    <h5 class="breadcrumbs-title">Sauces</h5>
                 </div>
             </div>
         </div>
@@ -37,36 +34,36 @@
 
     <!--start container-->
     <div class="container">
-        <p class="caption">Add, Edit or Remove Category Items.</p>
+        <p class="caption">Add, Edit or Remove Sauce Items.</p>
         <div class="divider"></div>
 
         <div class="row">
             <div class="col s12 m4 l3">
-                <h4 class="header">Items</h4>
+                    <h4 class="header">Items</h4>
             </div>
             <div>
-                <table id="data-table-cats" class="responsive-table display" cellspacing="0">
+                <table id="data-table" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Details</th>
+                            <th>Price</th>
                             <th>Available</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% for (i in cats) {
-                            var cat = cats[i]; %>
-                        <tr data-key='<%= cat._id %>' id='<%= cat._id %>'>
+                        <% for (i in sauces) {
+                            var sauce = sauces[i]; %>
+                        <tr data-key='<%= sauce._id %>' id='<%= sauce._id %>'>
                             <td>
-                                <input value="<%= cat.name %>" id="<%= cat._id %>_name"   type="text" readonly="true">
+                                <input value="<%= sauce.name %>" id="<%= sauce._id %>_name"  type="text" readonly>
                             </td>
                             <td>
-                                <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly="true">
+                                <input value="<%= sauce.price %>" id="<%= sauce._id %>_price"  type="number" readonly>
                             </td>
                             <td>
-                                <% if (cat.available == 'true') { %>
+                                <% if (sauce.available == 'true') { %>
                                 <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
                                 <label for='<%=i%>_available'>Available</label>
                                 <% } else { %>
@@ -97,7 +94,7 @@
                         <thead>
                             <tr>
                                 <th data-field="id">Name</th>
-                                <th data-field="name">Detail</th>
+                                <th data-field="name">Price</th>
                             </tr>
                         </thead>
 
@@ -111,8 +108,8 @@
                                 </td>
                                 <td>
                                     <div class="input-field col s12 ">
-                                        <label for="detail" class="">detail</label>
-                                        <input id="detail" name='detail' type="text" data-error=".errorTxt02">
+                                        <label for="price" class="">Price</label>
+                                        <input id="price" name='price' type="number" data-error=".errorTxt02">
                                         <div class="errorTxt02"></div>
                                 </td>
                             </tr>
@@ -140,28 +137,29 @@
     console.log('controller', '<%= controller %>');
 </script>
 
-<%- include("admin-footer"); -%>
+<%- include("../admin-footer"); -%>
 
 <script>
     $("#formValidate1").validate({
         rules: {
             name: {
                 required: true,
-                minlength: 5,
-                maxlength: 20
+                minlength: 3,
+                maxlength: 30
             },
-            detail: {
-                required: true
+            price: {
+                required: true,
+                number : true
             },
         },
         messages: {
             name: {
                 required: "Enter item name",
-                minlength: "Minimum length is 5 characters",
-                maxlength: "Maximum length is 20 characters"
+                minlength: "Minimum length is 3 characters",
+                maxlength: "Maximum length is 30 characters"
             },
-            detail: {
-                required: "Enter item detail"
+            price: {
+                required: "Enter item price"
             },
         },
         errorElement: 'div',
