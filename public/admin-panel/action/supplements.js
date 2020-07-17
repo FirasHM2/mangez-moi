@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 $("#add").on('click', function() {
-     $.post(siteUrl + '/admin-panel/sauces/add', {
+     $.post(siteUrl + '/admin-panel/supplements/add', {
         data: {
             name: $("#name").val(),
             price: $("#price").val()
@@ -44,7 +44,7 @@ $("#add").on('click', function() {
                 confirmButtonText: 'Sure'
             }).then(function (result) {
                 if (result.value) {
-                    $.post(siteUrl + '/admin-panel/sauces/delete', {
+                    $.post(siteUrl + '/admin-panel/supplements/delete', {
                         _id: _id,
                     }, function (data) {
                         if (data == "Success") {
@@ -80,7 +80,7 @@ $("#add").on('click', function() {
             var name = $(this).parent().prev().prev().prev().children().val();
             var detail = $(this).parent().prev().prev().children().val();
         
-            $.post(siteUrl + '/admin-panel/sauces/update', {
+            $.post(siteUrl + '/admin-panel/supplements/update', {
                 _id: _id,
                 data: {
                     name: name,
@@ -102,7 +102,7 @@ $("#add").on('click', function() {
         $($(nRow).find('input[name="available"]')[0]).change(function () {
             var _id = $(this).parent().parent().attr('data-key');
             var label = $($(this)[0]).next();
-            $.post(siteUrl + '/admin-panel/sauces/update', {
+            $.post(siteUrl + '/admin-panel/supplements/update', {
                 _id: _id,
                 data: {
                     available: $(this)[0].checked,
@@ -123,7 +123,7 @@ $("#add").on('click', function() {
 $('input[name="available"]').change(function () {
     var _id = $(this).parent().parent().attr('data-key');
     var label = $($(this)[0]).next();
-    $.post(siteUrl + '/admin-panel/sauces/update', {
+    $.post(siteUrl + '/admin-panel/supplements/update', {
         _id: _id,
         data: {
             available: $(this)[0].checked,
@@ -147,7 +147,7 @@ $('button[name="delete"]').click(function () {
         confirmButtonText: 'Sure'
     }).then(function (result) {
         if (result.value) {
-            $.post(siteUrl + '/admin-panel/sauces/delete', {
+            $.post(siteUrl + '/admin-panel/supplements/delete', {
                 _id: _id,
             }, function (data) {
                 if (data == "Success") {
@@ -186,7 +186,7 @@ $('button[name="save"]').click(function () {
     var name = $(this).parent().prev().prev().prev().children().val();
     var price = $(this).parent().prev().prev().children().val();
 
-    $.post(siteUrl + '/admin-panel/sauces/update', {
+    $.post(siteUrl + '/admin-panel/supplements/update', {
         _id: _id,
         data: {
             name: name,

@@ -1,0 +1,175 @@
+<%- include("../admin-header"); -%>
+
+<style>
+    .input-field div.error {
+        position: relative;
+        top: -1rem;
+        left: 0rem;
+        font-size: 0.8rem;
+        color: #FF4081;
+        -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    .input-field label.active {
+        width: 100%;
+    }
+</style>
+
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">Desserts</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+        <p class="caption">Add, Edit or Remove Dessert Items.</p>
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col s12 m4 l3">
+                    <h4 class="header">Items</h4>
+            </div>
+            <div>
+                <table id="data-table" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Available</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for (i in items) {
+                            var item = items[i]; %>
+                        <tr data-key='<%= item._id %>' id='<%= item._id %>'>
+                            <td>
+                                <input value="<%= item.name %>" id="<%= item._id %>_name"  type="text" readonly>
+                            </td>
+                            <td>
+                                <input value="<%= item.price %>" id="<%= item._id %>_price"  type="number" readonly>
+                            </td>
+                            <td>
+                                <% if (item.available == 'true') { %>
+                                <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Available</label>
+                                <% } else { %>
+                                <input type="checkbox" name='available' id='<%=i%>_available' />
+                                <label for='<%=i%>_available'>Not Available</label>
+                                <% } %>
+                            </td>
+                            <td>
+                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- <div class="divider"></div> -->
+        <form class="formValidate" id="formValidate1" method="post" action="#" novalidate="novalidate">
+            <div class="row">
+                <div class="col s12 m4 l3">
+                    <h4 class="header">Add Item</h4>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-field="id">Name</th>
+                                <th data-field="name">Price</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="input-field col s12">
+                                        <label for="name">name</label>
+                                        <input id="name" name='name' type="text" data-error=".errorTxt01">
+                                        <div class="errorTxt01"></div>
+                                </td>
+                                <td>
+                                    <div class="input-field col s12 ">
+                                        <label for="price" class="">Price</label>
+                                        <input id="price" name='price' type="number" data-error=".errorTxt02">
+                                        <div class="errorTxt02"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-field col s12">
+                    <a class="btn cyan waves-effect waves-light right" id="add">Add
+                        <i class="mdi-content-send right"></i>
+                    </a>
+                </div>
+        </form>
+    </div>
+
+    <div class="divider"></div>
+
+    </div>
+    <!--end container-->
+
+</section>
+
+<script>
+    var siteUrl = '<%= siteUrl %>';
+    console.log('active', '<%= active %>');
+    console.log('controller', '<%= controller %>');
+</script>
+
+<%- include("../admin-footer"); -%>
+
+<script>
+    $("#formValidate1").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3,
+                maxlength: 30
+            },
+            price: {
+                required: true,
+                number : true
+            },
+        },
+        messages: {
+            name: {
+                required: "Enter item name",
+                minlength: "Minimum length is 3 characters",
+                maxlength: "Maximum length is 30 characters"
+            },
+            price: {
+                required: "Enter item price"
+            },
+        },
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+</script>

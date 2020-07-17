@@ -1,14 +1,14 @@
-var Sauces = require('mongoose').model('Sauce');
+var Supps = require('mongoose').model('Supplement');
 
 exports.getList = function(req, res) {
-    Sauces.find({}, function(err, sauces) {
-        res.render('admin-panel/details/sauces', {active:'details', sauces:sauces});
+    Supps.find({}, function(err, items) {
+        res.render('admin-panel/details/supplements', {active:'details', items:items});
     });
 }
 exports.add = function(req, res) {
     let data = req.body.data;
 
-    Sauces.findOne({
+    Supps.findOne({
         'name': data.name
     }, function(err, sauce) {
         if (err) {
@@ -16,7 +16,7 @@ exports.add = function(req, res) {
             return;
         }
         if (!sauce) {
-            item = new Sauces({
+            item = new Supps({
                 name: data.name,
                 price: data.price
             });
@@ -39,7 +39,7 @@ exports.update = function(req, res) {
         res.status(500).send('No Selected');
         return;
     }
-    Sauces.updateOne({_id: _id}, {$set:data}, (err, item) => {
+    Supps.updateOne({_id: _id}, {$set:data}, (err, item) => {
         if (err) {
             res.status(501).send(err);
             return;
@@ -54,7 +54,7 @@ exports.delete = function(req, res) {
         res.status(500).send('No Selected');
         return;
     }
-    Sauces.findOneAndRemove({_id: _id}, (err, item) => {
+    Supps.findOneAndRemove({_id: _id}, (err, item) => {
         if (err) {
             res.status(501).send(err);
             return;

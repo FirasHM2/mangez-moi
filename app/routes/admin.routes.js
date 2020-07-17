@@ -1,5 +1,7 @@
 var users = require('../controllers/admin-panel/users.controller');
 var sauces = require('../controllers/admin-panel/sauces.controller');
+var supplements = require('../controllers/admin-panel/supplements.controller');
+var desserts = require('../controllers/admin-panel/desserts.controller');
 var cats = require('../controllers/admin-panel/categories.controller');
 var breads = require('../controllers/admin-panel/breads.controller');
 var ingredients = require('../controllers/admin-panel/ingredients.controller');
@@ -29,4 +31,14 @@ module.exports = function (app) {
     app.post('/admin-panel/sauces/add', requireAdmin, sauces.add);
     app.post('/admin-panel/sauces/update', requireAdmin, sauces.update);
     app.post('/admin-panel/sauces/delete', requireAdmin, sauces.delete);
+
+    app.get('/admin-panel/supplements', requireAdmin, supplements.getList);
+    app.post('/admin-panel/supplements/add', requireAdmin, supplements.add);
+    app.post('/admin-panel/supplements/update', requireAdmin, supplements.update);
+    app.post('/admin-panel/supplements/delete', requireAdmin, supplements.delete);
+
+    app.get('/admin-panel/desserts', requireAdmin, desserts.getList);
+    app.post('/admin-panel/desserts/add', requireAdmin, desserts.add);
+    app.post('/admin-panel/desserts/update', requireAdmin, desserts.update);
+    app.post('/admin-panel/desserts/delete', requireAdmin, desserts.delete);
 };

@@ -12,6 +12,8 @@ module.exports = function() {
     require('../app/models/breads.model');
     require('../app/models/ingredients.model');
     require('../app/models/sauces.model');
+    require('../app/models/supplements.model');
+    require('../app/models/desserts.model');
 
     return db;
 }
