@@ -12,9 +12,11 @@
         -o-transform: translateY(0%);
         transform: translateY(0%);
     }
+
     .input-field label.active {
         width: 100%;
     }
+
     input[type="text"]:disabled {
         color: rgba(0, 0, 0, 0.87) !important
     }
@@ -34,6 +36,14 @@
     </div>
     <!--breadcrumbs end-->
 
+    <style>
+        ul {
+            list-style-type: disclosure-closed;
+        }
+        ul li {
+            list-style-type: disclosure-closed;
+        }
+    </style>
 
     <!--start container-->
     <div class="container">
@@ -55,12 +65,16 @@
                     <tbody>
                         <% for (i in cats) {
                             var cat = cats[i]; %>
-                        <tr data-key='<%= cat._id %>' id='<%= cat._id %>'>
+                        <tr id='<%= cat.id %>'>
                             <td>
                                 <%= cat.name %>
                             </td>
                             <td>
-                                <%= cat.steps %>
+                                <ul class="">
+                                    <% for (i in cat.steps) { let step = cat.steps[i]; %>
+                                    <li class=""><%= step.name %></li>
+                                    <% } %>
+                                </ul>
                             </td>
                             <td>
                                 <% if (cat.available == 'true') { %>
@@ -72,9 +86,10 @@
                                 <% } %>
                             </td>
                             <td>
-                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
-                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
-                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                                <button class="btn blue waves-effect waves-light" name='update'><i
+                                        class="mdi-content-create"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i
+                                        class="mdi-action-delete"></i></button>
                             </td>
                         </tr>
                         <% } %>
@@ -82,178 +97,67 @@
                 </table>
             </div>
         </div>
-        <div>
+        <!-- <div class="divider"></div> -->
+        <div class="formValidate" id="formValidate1" style="padding-bottom: 10em">
             <div class="col s12">
                 <h4 class="header">Add Item</h4>
             </div>
             <div class="row">
+                <div class="input-field col s12 m6 l5">
+                    <label for="categoryName">Category Name</label>
+                    <input type="text" name="categoryName" id = 'categoryName'/>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col s4">
-                    <label for = "">Step Title</label>
+                    <label for="">Step Name</label>
                 </div>
                 <div class="col s3">
-                    <label for = "">Step Type</label>
+                    <label for="">Step Type</label>
                 </div>
                 <div class="col s4">
-                    <label for = "">Collection</label>
+                    <label for="">Collection</label>
                 </div>
                 <div class="col s1">
-                    <label for = "">Delete</label>
+                    <label for="">Delete</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s4">
-                    <input type="text" name = "stepTitle"/>
-                </div>
-                <div class="input-field col s3">
-                    <select name = "stepType">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="input-field col s4">
-                    <select name = "stepCollection">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="input-field col s1">
-                    <button id = 'deleteStep' class="btn btn-floating cyan waves-effect waves-light" name='deleteStep'><i class="mdi-content-clear"></i></button>
-                </div>
+            <div class="row categoryAction">
+                <a class="insertStep btn btn-lg blue waves-effect waves-light">Insert New Step <i class="mdi-content-add"></i></a>
+                <a class="addCategory btn btn-lg right waves-effect waves-light">Add New Category <i class="mdi-content-send"></i></a>
+                <a style="margin-right:1em" class="cancel btn btn-lg right waves-effect waves-light yellow darken-4">Cancel Editing <i class="mdi-content-send"></i></a> 
             </div>
-            <div class = "row">
-                <button class = "btn btn-lg blue waves-effect waves-light">Insert New Step <i class="mdi-content-add"></i></button>
-                <button class = "btn btn-lg right waves-effect waves-light">Add <i class="mdi-content-send"></i></button>
-            </div>
-        </div>
-        <!-- <div class="divider"></div> -->
-        <form class="formValidate" id="formValidate1" method="post" action="#" novalidate="novalidate">
-            <div class="row">
-                <div class="col s12 m4 l3">
-                    <h4 class="header">Add Item</h4>
-                </div>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th data-field="id">Name</th>
-                                <th data-field="name">Detail</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="input-field col s12">
-                                        <label for="name">name</label>
-                                        <input id="name" name='name' type="text" data-error=".errorTxt01">
-                                        <div class="errorTxt01"></div>
-                                </td>
-                                <td>
-                                    <div class="input-field col s12 ">
-                                        <label for="detail" class="">detail</label>
-                                        <input id="detail" name='detail' type="text" data-error=".errorTxt02">
-                                        <div class="errorTxt02"></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="input-field col s12">
-                    <a class="btn btn-lg cyan waves-effect waves-light right" id="add">Add
-                        <i class="mdi-content-send right"></i>
-                    </a>
-                </div>
         </form>
     </div>
 
     <div class="divider"></div>
-
-    </div>
     <!--end container-->
 
 </section>
 
-<div class="modal fade" id = "addModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Header</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="input-field col s4">
-                            <label for = "stepTitle">Step Title</label>
-                            <input type="text" name = "stepTitle" id = "stepTitle"/>
-                        </div>
-                        <div class="input-field col s3">
-                            <select name = "stepType" id = "stepType">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                            <label for = "stepType">Step Type</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <select name = "stepData" id = "stepData">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                            <label for = "stepData">Collection</label>
-                        </div>
-                        <div class="col s1">
-                            <button class="btn light-blue waves-effect waves-light">+</button>
-                        </div>
-                    </div>
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-    </div>
-</div>
 <script>
     var siteUrl = '<%= siteUrl %>';
     console.log('active', '<%= active %>');
     console.log('controller', '<%= controller %>');
+    let stepTemplate = '<div class="row step">\
+                <div class="input-field col s4">\
+                    <input type="text" name="stepName" />\
+                </div>\
+                <div class="input-field col s3">\
+                    <select name="stepType">\
+                        <% for (type in Constants.StepType) { let name = Constants.StepType[type]; %><option value="<%= type %>"><%= name %></option>\<% } %>
+                    </select>\
+                </div>\
+                <div class="input-field col s4">\
+                    <select name="stepCollection">\
+                        <% for (i in Constants.Collections) {
+                            let collection = Constants.Collections[i]; %><option value="<%= collection %>"><%= collection %></option>\<% } %>
+                    </select>\
+                </div>\
+                <div class="input-field col s1">\
+                    <a class="deleteStep btn btn-floating cyan waves-effect waves-light" ><i class="mdi-content-clear"></i></a>\
+                </div>\
+            </div>';
 </script>
 
 <%- include("../admin-footer"); -%>
-
-<script>
-    $("#formValidate1").validate({
-        rules: {
-            name: {
-                required: true,
-                minlength: 5,
-                maxlength: 20
-            },
-            detail: {
-                required: true
-            },
-        },
-        messages: {
-            name: {
-                required: "Enter item name",
-                minlength: "Minimum length is 5 characters",
-                maxlength: "Maximum length is 20 characters"
-            },
-            detail: {
-                required: "Enter item detail"
-            },
-        },
-        errorElement: 'div',
-        errorPlacement: function (error, element) {
-            var placement = $(element).data('error');
-            if (placement) {
-                $(placement).append(error)
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-</script>

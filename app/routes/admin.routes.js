@@ -17,6 +17,7 @@ module.exports = function (app) {
     app.post('/admin-panel/users/reset', requireAdmin, users.resetPassword);
 
     app.get('/admin-panel/categories', requireAdmin, cats.categoryList);
+    app.post('/admin-panel/categories/get/:id', requireAdmin, cats.get);
     app.post('/admin-panel/categories/add', requireAdmin, cats.addCategory);
     app.post('/admin-panel/categories/update', requireAdmin, cats.updateCategory);
     app.post('/admin-panel/categories/delete', requireAdmin, cats.deleteCategory);
