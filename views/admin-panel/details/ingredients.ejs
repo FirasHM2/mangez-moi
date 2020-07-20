@@ -12,6 +12,7 @@
         -o-transform: translateY(0%);
         transform: translateY(0%);
     }
+
     .input-field label.active {
         width: 100%;
     }
@@ -39,7 +40,7 @@
 
         <div class="row">
             <div class="col s12 m4 l3">
-                    <h4 class="header">Items</h4>
+                <h4 class="header">Items</h4>
             </div>
             <div>
                 <table id="data-table" class="responsive-table display" cellspacing="0">
@@ -57,10 +58,10 @@
                             var item = items[i]; %>
                         <tr data-key='<%= item._id %>' id='<%= item._id %>'>
                             <td>
-                                <input value="<%= item.name %>" id="<%= item._id %>_name"  type="text" readonly>
+                                <input value="<%= item.name %>" id="<%= item._id %>_name" type="text" readonly>
                             </td>
                             <td>
-                                <input value="<%= item.price %>" id="<%= item._id %>_price"  type="number" readonly>
+                                <input value="<%= item.price %>" id="<%= item._id %>_price" type="number" readonly>
                             </td>
                             <td>
                                 <% if (item.available == 'true') { %>
@@ -72,9 +73,12 @@
                                 <% } %>
                             </td>
                             <td>
-                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
-                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
-                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                                <button class="btn blue waves-effect waves-light" name='update'><i
+                                        class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i
+                                        class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i
+                                        class="mdi-action-delete"></i></button>
                             </td>
                         </tr>
                         <% } %>
@@ -117,7 +121,7 @@
                     </table>
                 </div>
                 <div class="input-field col s12">
-                    <a class="btn cyan waves-effect waves-light right" id="add">Add
+                    <a class="btn btn-lg cyan waves-effect waves-light right" id="add">Add
                         <i class="mdi-content-send right"></i>
                     </a>
                 </div>
@@ -149,7 +153,7 @@
             },
             price: {
                 required: true,
-                number : true
+                number: true
             },
         },
         messages: {

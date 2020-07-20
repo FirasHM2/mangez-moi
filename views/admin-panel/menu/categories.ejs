@@ -39,17 +39,14 @@
     <div class="container">
         <p class="caption">Add, Edit or Remove Category Items.</p>
         <div class="divider"></div>
-
         <div class="row">
-            <div class="col s12 m4 l3">
-                <h4 class="header">Items</h4>
-            </div>
-            <div>
+            <h4 class="header">Items</h4>
+            <div class="">
                 <table id="data-table-cats" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Details</th>
+                            <th>Steps</th>
                             <th>Available</th>
                             <th>Action</th>
                         </tr>
@@ -60,10 +57,10 @@
                             var cat = cats[i]; %>
                         <tr data-key='<%= cat._id %>' id='<%= cat._id %>'>
                             <td>
-                                <input value="<%= cat.name %>" id="<%= cat._id %>_name"   type="text" readonly="true">
+                                <%= cat.name %>
                             </td>
                             <td>
-                                <input value="<%= cat.detail %>" id="<%= cat._id %>_detail"  type="text" readonly="true">
+                                <%= cat.steps %>
                             </td>
                             <td>
                                 <% if (cat.available == 'true') { %>
@@ -85,7 +82,51 @@
                 </table>
             </div>
         </div>
-
+        <div>
+            <div class="col s12">
+                <h4 class="header">Add Item</h4>
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <label for = "">Step Title</label>
+                </div>
+                <div class="col s3">
+                    <label for = "">Step Type</label>
+                </div>
+                <div class="col s4">
+                    <label for = "">Collection</label>
+                </div>
+                <div class="col s1">
+                    <label for = "">Delete</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input type="text" name = "stepTitle"/>
+                </div>
+                <div class="input-field col s3">
+                    <select name = "stepType">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="input-field col s4">
+                    <select name = "stepCollection">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="input-field col s1">
+                    <button id = 'deleteStep' class="btn btn-floating cyan waves-effect waves-light" name='deleteStep'><i class="mdi-content-clear"></i></button>
+                </div>
+            </div>
+            <div class = "row">
+                <button class = "btn btn-lg blue waves-effect waves-light">Insert New Step <i class="mdi-content-add"></i></button>
+                <button class = "btn btn-lg right waves-effect waves-light">Add <i class="mdi-content-send"></i></button>
+            </div>
+        </div>
         <!-- <div class="divider"></div> -->
         <form class="formValidate" id="formValidate1" method="post" action="#" novalidate="novalidate">
             <div class="row">
@@ -120,7 +161,7 @@
                     </table>
                 </div>
                 <div class="input-field col s12">
-                    <a class="btn cyan waves-effect waves-light right" id="add">Add
+                    <a class="btn btn-lg cyan waves-effect waves-light right" id="add">Add
                         <i class="mdi-content-send right"></i>
                     </a>
                 </div>
@@ -134,6 +175,47 @@
 
 </section>
 
+<div class="modal fade" id = "addModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <label for = "stepTitle">Step Title</label>
+                            <input type="text" name = "stepTitle" id = "stepTitle"/>
+                        </div>
+                        <div class="input-field col s3">
+                            <select name = "stepType" id = "stepType">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <label for = "stepType">Step Type</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <select name = "stepData" id = "stepData">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <label for = "stepData">Collection</label>
+                        </div>
+                        <div class="col s1">
+                            <button class="btn light-blue waves-effect waves-light">+</button>
+                        </div>
+                    </div>
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    </div>
+</div>
 <script>
     var siteUrl = '<%= siteUrl %>';
     console.log('active', '<%= active %>');
