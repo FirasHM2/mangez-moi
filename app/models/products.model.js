@@ -1,14 +1,28 @@
 const mongoose = require("mongoose"),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  findOrCreate = require("mongoose-findorcreate");;
 
 var itemSchema = new Schema({
-  imagePath: { type: String, required: true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  type: { type: String, required: true },
-  price: { type: Number, required: true }
+  id : String,
+  image: String,
+  category : String,
+  name: {
+    type: String
+  },
+  price : Number,
+  description: String,
+  available : {
+    type : String,
+    default : false
+  }
 });
 
+itemSchema.pre('save', function(next) {
+  this.id = new mongoose.Types.ObjectId().toHexString();
+  next();
+});
+
+itemSchema.plugin(findOrCreate);
 const Product = mongoose.model("Product", itemSchema);
 
 module.exports = Product;

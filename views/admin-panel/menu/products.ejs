@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">Products</h5>
+                    <h5 class="breadcrumbs-title">Types of Products</h5>
                 </div>
             </div>
         </div>
@@ -42,33 +42,111 @@
 
         <div class="row">
             <div class='col s4 m4 l4'>
-      
+                <label for = "categoryId">Products in</label>
+                <select name = 'category' id = "categoryId" readonly>
+                    <% for(j in cats) {
+                        let cat = cats[j]; %>
+                    <option value="<%= cat.id%>"><%= cat.name%></option>
+                    <% } %>
+                </select>
             </div>
             <div>
-                
+                <table id="data-table-products" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Available</th>
+                            <th>Action</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for (i in products) {
+                            var product = products[i]; %>
+                        <tr data-key='<%= product.id %>' id = '<%= product.id %>'>
+                            <td>
+                                <input value="<%= product.name %>" id="<%= product.id %>_name"  type="text" readonly>
+                            </td>
+                            <td>
+                                <input value="<%= product.price %>" id="<%= product.id %>_price"  type="number" readonly>
+                            </td>
+                            <td>
+                                <input value="<%= product.description %>" id="<%= product.id %>_description"  type="text" readonly>
+                            </td>
+                            <td>
+                                <% if (product.available == 'true') { %>
+                                    <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />
+                                    <label for='<%=i%>_available'>Available</label>
+                                <% } else { %>
+                                    <input type="checkbox" name='available' id='<%=i%>_available' />
+                                    <label for='<%=i%>_available'>Not Available</label>
+                                <% } %>
+                            </td>
+                            <td>
+                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                            </td>
+                            <td>
+                                <%= product.category %>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <!-- <div class="divider"></div> -->
         <form class="formValidate" id="formValidate1" method="post" action="#" novalidate="novalidate">
             <div class="row">
-                <div class="col s12 m12 l12">
-                    <h4 class="header">Add Products</h4>
+                <div class="col s12 m4 l3">
+                    <h4 class="header">Add Item</h4>
                 </div>
-                <div >
-                    <ul id="issues-collection" class="collection">
-                        <li class="collection-item avatar">
-                            <i class="mdi-content-content-paste red circle"></i>
-                            <span class="collection-header">Product No. 1</span>
-                            <p><strong>Title :</strong> <input id="" type="text"></p>
-                            <p><strong>Payment Type:</strong> Wallet</p>
-                            <p><strong>Sou:</strong>
-                            </p>
-                        </li>
-                    </ul>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Desription</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="input-field col s12">
+                                        <label for="name">name</label>
+                                        <input id="name" name='name' type="text" data-error=".errorTxt01"/>
+                                        <div class="errorTxt01">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-field col s12 ">
+                                        <label for="price" class="">Price</label>
+                                        <input id="price" name='price' type="text" data-error=".errorTxt02"/>
+                                        <div class="errorTxt02"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-field col s12">
+                                        <label for="description">Description</label>
+                                        <input id="description" name='description' type="text" data-error=".errorTxt03"/>
+                                        <div class="errorTxt03">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="input-field col s12">
-                    <a class="btn cyan waves-effect waves-light right" id="add">Add
+                    <a class="btn btn-lg cyan waves-effect waves-light right" id="add">Add
                         <i class="mdi-content-send right"></i>
                     </a>
                 </div>
@@ -95,8 +173,6 @@
         rules: {
             name: {
                 required: true,
-                minlength: 5,
-                maxlength: 20
             },
             price: {
                 required: true,
@@ -106,11 +182,9 @@
         messages: {
             name: {
                 required: "Enter item name",
-                minlength: "Minimum length is 5 characters",
-                maxlength: "Maximum length is 20 characters"
             },
             price: {
-                required: "Enter item price"
+                required: "Enter item price",
             },
         },
         errorElement: 'div',

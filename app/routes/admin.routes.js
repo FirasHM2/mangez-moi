@@ -23,6 +23,9 @@ module.exports = function (app) {
     app.post('/admin-panel/categories/delete', requireAdmin, cats.deleteCategory);
 
     app.get('/admin-panel/products', requireAdmin, products.productList);
+    app.post('/admin-panel/products/add', requireAdmin, products.addProduct);
+    app.post('/admin-panel/products/update', requireAdmin, products.updateProduct);
+    app.post('/admin-panel/products/delete', requireAdmin, products.deleteProduct);
 
     app.get('/admin-panel/breads', requireAdmin, breads.breadsList);
     app.post('/admin-panel/breads/add', requireAdmin, breads.addBread);
