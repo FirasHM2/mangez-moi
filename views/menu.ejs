@@ -11,41 +11,36 @@
     <div class="row inner-menu-box">
       <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-sandwichs-tab" data-toggle="pill" href="#v-pills-sandwichs" role="tab" aria-controls="v-pills-sandwichs" aria-selected="true">Sandwichs</a>
-              <a class="nav-link" id="v-pills-Burgers-tab" data-toggle="pill" href="#v-pills-Burgers" role="tab" aria-controls="v-pills-Burgers" aria-selected="false">Burgers</a>
-              <a class="nav-link" id="v-pills-Hummers-tab" data-toggle="pill" href="#v-pills-Hummers" role="tab" aria-controls="v-pills-Hummers" aria-selected="false">Hummers</a>
-              <a class="nav-link" id="v-pills-Americaines-tab" data-toggle="pill" href="#v-pills-Americaines" role="tab" aria-controls="v-pills-Americaines" aria-selected="false">Americaines</a>
-              <a class="nav-link" id="v-pills-Vegetariens-tab" data-toggle="pill" href="#v-pills-Vegetariens" role="tab" aria-controls="v-pills-Vegetariens" aria-selected="false">Vegetariens</a>
-              <a class="nav-link" id="v-pills-Paninis-tab" data-toggle="pill" href="#v-pills-Paninis" role="tab" aria-controls="v-pills-Paninis" aria-selected="false">Paninis</a>
-              <a class="nav-link" id="v-pills-Tacos-tab" data-toggle="pill" href="#v-pills-Tacos" role="tab" aria-controls="v-pills-Tacos" aria-selected="false">Tacos</a>
-      </div>
-      <form id="categorieRequest" action="/sandwich" method="post">
-        <input id="categorieRequestInput" type="hidden" name="categieDeSandwich" value="">
-      </form>
+          <% data.forEach((catData) => { %>
+          <a class="nav-link" id="v-pills-<%= catData.id %>-tab" data-toggle="pill"
+            href="#v-pills-<%= catData.id %>" role="tab" aria-controls="v-pills-<%= catData.id %>" aria-selected="true"><%= catData.name %></a>
+          <% }) %>
+        </div>
+        <form id="categorieRequest" action="/sandwich" method="post">
+          <input id="categorieRequestInput" type="hidden" name="categieDeSandwich" value="">
+        </form>
       </div>
       <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-sandwichs" role="tabpanel" aria-labelledby="v-pills-sandwichs-tab">
+          <% data.forEach((catData) => { %>
+          <div class="tab-pane fade show" id="v-pills-<%= catData.id %>" role="tabpanel" aria-labelledby="v-pills-<%= catData.id %>-tab">
             <div class="row">
               <!-- row start from here -->
-            <%sandwich.forEach(function(sandwich){ %>
-             <%  if (sandwich.type === sandCategory) {  %>
-                <div class="col-lg-4 col-md-6 special-grid">
-                    <div class="gallery-single fix submit">
-                      <img class="img-fluid" src=<%=sandwich.imagePath%> alt="Image">
-                      <div class="why-text">
-                        <h4 class="sandTitle"><%=sandwich.title%></h4>
-                        <p><%=sandwich.description%></p>
-                        <h5><%=sandwich.price%></h5>
-                        <input type="hidden" name="sandwichId" value=<%=sandwich._id%>>
-                        <input type="hidden" name="sandwichName" value=<%=sandwich.title%>>
-                      </div>
-                    </div>
+              <% catData.products.forEach((product) => { %>
+              <div class="col-lg-4 col-md-6 special-grid">
+                <div class="gallery-single fix submit">
+                  <img class="img-fluid" src='/images/img-01.jpg' alt="Image">
+                  <div class="why-text">
+                    <h4 class="sandTitle"><%=product.name%></h4>
+                    <p><%=product.description%></p>
+                    <h5><%=product.price%></h5>
+                  </div>
                 </div>
-              <% } %>
+              </div>
               <% }) %>
             </div>
           </div>
+          <% }) %>
           <!-- row ends here -->
         </div>
       </div>

@@ -57,6 +57,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Description</th>
+                            <th>Image</th>
                             <th>Available</th>
                             <th>Action</th>
                             <th>Category</th>
@@ -76,6 +77,10 @@
                             <td>
                                 <input value="<%= product.description %>" id="<%= product.id %>_description"  type="text" readonly>
                             </td>
+                            <td>
+                                <input  id="<%= product.id %>_img"  type="file" readonly>
+                            </td>
+
                             <td>
                                 <% if (product.available == 'true') { %>
                                     <input type="checkbox" name='available' checked='checked' id='<%=i%>_available' />

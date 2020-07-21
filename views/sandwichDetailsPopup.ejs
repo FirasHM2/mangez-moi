@@ -1,175 +1,25 @@
-<!--sandwich details popup -->
-<div class="sandwichDetailsContainer overflow-hidden">
-	<!--multisteps-form-->
-	      <div class="multisteps-form">
-	        <!--progress bar-->
-	        <div class="row">
-	          <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
-	            <div class="multisteps-form__progress">
-	              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">essentiels</button>
-	              <button class="multisteps-form__progress-btn" type="button" title="Address">Supplements</button>
-	              <button class="multisteps-form__progress-btn" type="button" title="Order Info">Deserts</button>
-	              <button class="multisteps-form__progress-btn" type="button" title="Comments">Comments</button>
-	            </div>
-	          </div>
-	        </div>
-	        <!--form panels-->
-	        <div class="row">
-	          <div class="col-12 col-lg-8 m-auto">
-	            <form class="multisteps-form__form">
-	              <!--single form panel-->
-	              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="slideHorz">
-	                <h3 class="multisteps-form__title">Name of the sandwich</h3>
-	                <div class="multisteps-form__content">
-	                  <div class="form-row mt-4">
-	                    <div class="col-12 col-sm-6">
-	                      <!-- <input class="multisteps-form__input form-control" type="text" placeholder="First Name"/> -->
-	                      <select class="form-control" name="bread" id="bread">
-	                        <option value="classic">Pain classique</option>
-	                        <option value="pita">Pain pita</option>
-	                      </select>
-	                    </div>
-	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-	                      <!-- <input class="multisteps-form__input form-control" type="text" placeholder="Last Name"/> -->
-	                      <select class="form-control" name="sauce" id="sauce">
-	                        <option value="Sans sauce">Sans sauce</option>
-	                        <option value="Mayonnaise">Mayonnaise</option>
-	                        <option value="Ketchup">Ketchup</option>
-	                        <option value="Andalous">Andalous</option>
-	                        <option value="Algerienne">Algerienne</option>
-	                        <option value="Biggy">Biggy Burger</option>
-	                        <option value="Barbecue">Barbecue</option>
-	                        <option value="Samaurai">Samaurai</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                  <div class="form-row mt-4">
-	                    <div class="col-12 col-sm-6">
-	                      <div class="multisteps-form__input form-control">
-	                        <input type="checkbox" name="Salade" value="Ingredients" checked />
-	                        <label for="Salade">Salade</label>&nbsp;&nbsp;&nbsp;&nbsp;
-	                        <input type="checkbox" name="Tomate" value="Ingredients" checked/>
-	                        <label for="Tomate">Tomate</label>&nbsp;&nbsp;&nbsp;&nbsp;
-	                        <input type="checkbox" name="Oignon" value="Ingredients" checked/>
-	                        <label for="Oignon">Oignon</label>&nbsp;&nbsp;&nbsp;&nbsp;
-	                      </div>
-
-	                    </div>
-	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-	                      <!-- <input class="multisteps-form__input form-control" type="email" placeholder="Email"/> -->
-	                      <select class="form-control multisteps-form__input" name="frites" id="frites">
-	                        <option value="frites">Menu (avec frites)</option>
-	                        <option value="sans frites">Sans frites</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                  <div class="form-row mt-4">
-	                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-	                      <select class="form-control multisteps-form__input" name="drinks" id="drinks">
-	                        <option value="Coca">Coca</option>
-	                        <option value="Fanta">Fanta</option>
-	                        <option value="7up">7up</option>
-	                        <option value="Ice tee">Ice tee</option>
-	                        <option value="Sans boisson">Sans boisson</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                   <!--  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-	                      <input class="multisteps-form__input form-control" type="password" placeholder="Repeat Password"/>
-	                    </div>
-	                  </div> -->
-	                  <div class="button-row d-flex mt-4">
-	                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-	                  </div>
-	                </div>
-	              </div>
-	              <!--single form panel-->
-	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
-	                <h3 class="multisteps-form__title">Supplements</h3>
-	                <div class="multisteps-form__content">
-	                  <span>0.5$</span>
-	                  <div class="form-row mt-4">
-	                    <div class="col">
-	                      <label for="Cheddar">Cheddar: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Bacon: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Mozza: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Sujuk: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                    </div>
-	                  </div>
-	                  <span>0.9$</span>
-	                  <div class="form-row mt-4">
-	                    <div class="col">
-	                      <label for="Cheddar">Cheddar: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Bacon: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Mozza: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Sujuk: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                    </div>
-	                  </div>
-	                  <span>1.5$</span>
-	                  <div class="form-row mt-4">
-	                    <label for="Cheddar">Cheddar: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Bacon: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Mozza: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Sujuk: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                  </div>
-	                  <div class="button-row d-flex mt-4">
-	                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-	                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-	                  </div>
-	                </div>
-	              </div>
-	              <!--single form panel-->
-	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
-	                <h3 class="multisteps-form__title">Deserts</h3>
-	                <div class="multisteps-form__content">
-	                  <div class="row">
-	                      <div class="form-row mt-4">
-	                    <label for="Cheddar">Cheddar: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Bacon: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Mozza: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                      <label for="Cheddar">Sujuk: </label>
-	                      <input type="number" name="Cheddar" id="Cheddar" name="Cheddar" min="0" max="5" />&nbsp;&nbsp;
-	                  </div>
-	                  </div>
-	                  <div class="row">
-	                    <div class="button-row d-flex mt-4 col-12">
-	                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-	                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	              <!--single form panel-->
-	              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="slideHorz">
-	                <h3 class="multisteps-form__title">Additional Comments</h3>
-	                <div class="multisteps-form__content">
-	                  <div class="form-row mt-4">
-	                    <textarea class="multisteps-form__textarea form-control" placeholder="Additional Comments and Requirements"></textarea>
-	                  </div>
-	                  <div class="button-row d-flex mt-4">
-	                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-	                    <button class="btn btn-success ml-auto" type="button" title="Send">Send</button>
-	                  </div>
-	                </div>
-	              </div>
-	            </form>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	<!-- end popup -->
+<!-- Order Popup -->
+<div class="modal fade" id="orderModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+	
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Modal Heading</h4>
+					<button type="button" class="close" data-dismiss="modal">+</button>
+				</div>
+	
+				<!-- Modal body -->
+				<div class="modal-body">
+					Modal body..
+				</div>
+	
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+	<!-- End of Order Popup -->

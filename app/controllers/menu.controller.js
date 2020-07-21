@@ -1,13 +1,20 @@
-var Product = require('mongoose').model('Product');
-
-var sandCategory = "Sandwichs";
+var Products = require('mongoose').model('Product');
+let Cats = require('mongoose').model('Category');
 
 exports.render = function (req, res) {
-    Product.find({}, function (err, result) {
-        if (err) {
-            res.send('error occured in Product Model.');
-            return;
-        }
-        res.render("menuPage", { sandwich: result, sandCategory: sandCategory });
+    let data = [];
+    console.log('asdfasdfasdf');
+    Cats.find({}).then((cats) => {
+        var tasks = cats.map((cat) => {
+            console.log('cat', cat);
+            var categoryData = cat;
+            return Products.find({category : cat.id}, (err, products) => {
+                categoryData.products = products;
+                data.push(categoryData);
+            });
+        });
+        Promise.all(tasks).then(() => {
+            res.render('menuPage', {data : data});
+        });
     });
 }

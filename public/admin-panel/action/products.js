@@ -8,16 +8,20 @@ $(document).ready(function() {
         order:[[0, 'desc']],
         paging:false,
         columnDefs:[{
-            targets:[5],
+            targets:[6],
             visible:false
         }],
     });
     $('#categoryId').change();
 });
 
+$("input[type='file']").click(function() {
+    console.log($(this).val);
+});
+
 $('#categoryId').change(function() {
     let cid = $(this).val();
-    $table.column(5).search(cid).draw();
+    $table.column(6).search(cid).draw();
 });
 
 $("#add").click(function() {

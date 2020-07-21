@@ -14,6 +14,10 @@ var itemSchema = new Schema({
   available : {
     type : String,
     default : false
+  },
+  image: {
+    data: Buffer,
+    contentType: String
   }
 });
 
