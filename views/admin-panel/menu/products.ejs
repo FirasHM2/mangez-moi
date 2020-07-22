@@ -18,6 +18,11 @@
     .dataTables_filter {
         display: none
     }
+
+    .backdrop{
+       background-color: white;
+    }
+
 </style>
 
 <section id="content">
@@ -66,7 +71,8 @@
 
                     <tbody>
                         <% for (i in products) {
-                            var product = products[i]; %>
+                            var product = products[i]; 
+                        %>
                         <tr data-key='<%= product.id %>' id = '<%= product.id %>'>
                             <td>
                                 <input value="<%= product.name %>" id="<%= product.id %>_name"  type="text" readonly>
@@ -78,7 +84,7 @@
                                 <input value="<%= product.description %>" id="<%= product.id %>_description"  type="text" readonly>
                             </td>
                             <td>
-                                <img id="<%= product.id %>_image" name="image" src = "<%= product.image%>" width = "80", height = "80"/>
+                                <img id="<%= product.id %>_image" name="image" src = "<%= product.image%>" width = "80", height = "80" class="tooltipped" data-position="left" data-delay="50" data-tooltip='<img src = "<%= product.image%>" height = "200px" width="auto"/>'/>
                                 <input type = "file" class = "image" hidden />
                             </td>
 
@@ -152,7 +158,7 @@
                                     <div class="file-field input-field col s12">
                                         <div class = "btn">
                                             <span>Browse</span>
-                                            <input id="image" class="image" name='image' type="file"/>    
+                                            <input id="image" name='image' type="file"/>    
                                         </div>
                                         <div class = "file-path-wrapper">
                                             <input class = "file-path validate" type = "text" placeholder = "Upload image" />

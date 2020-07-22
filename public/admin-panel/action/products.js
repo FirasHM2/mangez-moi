@@ -15,10 +15,6 @@ $(document).ready(function () {
     $('#categoryId').change();
 });
 
-$("input[type='file']").click(function () {
-    console.log($(this).val);
-});
-
 $('#categoryId').change(function () {
     let cid = $(this).val();
     $table.column(6).search(cid).draw();
@@ -27,7 +23,7 @@ $('#categoryId').change(function () {
 var image_data = "";
 $("#image").change(function () {
     if (this.files && this.files[0]) {
-        if (this.files[0].size >= 16 * 1024 * 1024) {
+        if (this.files[0].size >= 15 * 1024 * 1024) {
             Swal.fire({
                 title: 'File size is too large!',
                 text: 'Sorry...',
@@ -53,10 +49,12 @@ $("#add").click(function () {
             image: image_data
         }
     }, function (id) {
-        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly>', '<input value="' + $("#price").val() + '" type="number" readonly>', '<input value="' + $("#description").val() + '" type="text" readonly>', '<img src = "#" width="80" height="80" />' ,'<input type="checkbox" name="available" id="' + id + '_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button> <button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button> <button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>', $('#categoryId').val()]).draw().node();
+        var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly>', '<input value="' + $("#price").val() + '" type="number" readonly>', '<input value="' + $("#description").val() + '" type="text" readonly>', '<img src = "#" width="80" height="80" class="tooltipped" data-position="left" data-delay="50" data-tooltip="#"/>' ,'<input type="checkbox" name="available" id="' + id + '_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button> <button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button> <button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>', $('#categoryId').val()]).draw().node();
         $(nRow).attr('data-key', id);
         $(nRow).attr('id', id);
         $($(nRow).find('img')[0]).attr('src', image_data);
+        $($(nRow).find('img')[0]).attr('data-tooltip', '<img src = "' + image_data + '" height = "200px" width="auto"/>');
+        $($(nRow).find('img')[0]).tooltip();
 
         $('button[name="save"]').hide();
 
@@ -168,13 +166,14 @@ $('input[name="available"]').change(function () {
     });
 });
 
+// update image
 $(".image").change(function() {
     var id = $(this).parent().parent().attr('data-key');
     var current_image = $(this).prev();
 
     console.log('id', id);
     if (this.files && this.files[0]) {
-        if (this.files[0].size >= 16 * 1024 * 1024) {
+        if (this.files[0].size >= 15 * 1024 * 1024) {
             Swal.fire({
                 title: 'File size is too large!',
                 text: 'Sorry...',
@@ -199,6 +198,7 @@ $(".image").change(function() {
     }
 });
 
+// open file open dialog
 $('img[name="image"]').click(function () {
     image_data = $(this).attr('src');
     $(this).next().click();

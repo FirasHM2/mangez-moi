@@ -159,18 +159,34 @@
             </ul>
           </li>
           <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'statistics' ? 'active' : ''%>"><i
-                      class="mdi-editor-insert-chart"></i> Statistics</a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="#" class="waves-effect waves-cyan">Monthly Income</a></li>
-                      <li><a href="#" class="waves-effect waves-cyan">Top Products</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
+            <ul class="collapsible collapsible-accordion">
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'statistics' ? 'active' : ''%>"><i
+                    class="mdi-editor-insert-chart"></i> Statistics</a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a href="#" class="waves-effect waves-cyan">Monthly Income</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">Top Products</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan <%= active == 'manage' ? 'active' : ''%>"><i
+                    class="mdi-action-home"></i> Management</a>
+                <div class="collapsible-body">
+                  <ul>
+                      <!-- <li class="<%=controller == 'categories' ? 'active' : ''%>"><a href="/admin-panel/categories" class="waves-effect waves-cyan">Categories</a></li> -->
+                    <li><a href="#" class="waves-effect waves-cyan">Slides</a></li>
+                    <li><a href="/admin-panel/management/gallery" class="waves-effect waves-cyan">Gallery</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">Stuff</a></li>
+                    <li><a href="#" class="waves-effect waves-cyan">Reviews</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
           <li class="bold <%= active == 'users' ? 'active' : ''%>"><a href="/admin-panel/users" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a></li>
         </ul>
         <a href="#" data-activates="slide-out"

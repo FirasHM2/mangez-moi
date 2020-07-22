@@ -56,4 +56,5 @@ module.exports = function (app) {
     app.post('/admin-panel/drinks/add', requireAdmin, drinks.add);
     app.post('/admin-panel/drinks/update', requireAdmin, drinks.update);
     app.post('/admin-panel/drinks/delete', requireAdmin, drinks.delete);
+
 };
