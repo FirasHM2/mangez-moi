@@ -26,6 +26,7 @@ exports.addProduct = function(req, res) {
                 name: data.name,
                 price: data.price,
                 description: data.description,
+                image: data.image
             });
             product.save(function(err) {
                 if (err) {

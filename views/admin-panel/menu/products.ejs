@@ -78,7 +78,8 @@
                                 <input value="<%= product.description %>" id="<%= product.id %>_description"  type="text" readonly>
                             </td>
                             <td>
-                                <input  id="<%= product.id %>_img"  type="file" readonly>
+                                <img id="<%= product.id %>_image" name="image" src = "<%= product.image%>" width = "80", height = "80"/>
+                                <input type = "file" class = "image" hidden />
                             </td>
 
                             <td>
@@ -118,6 +119,7 @@
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Desription</th>
+                                <th>Image</th>
                             </tr>
                         </thead>
 
@@ -144,6 +146,18 @@
                                         <input id="description" name='description' type="text" data-error=".errorTxt03"/>
                                         <div class="errorTxt03">
                                         </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="file-field input-field col s12">
+                                        <div class = "btn">
+                                            <span>Browse</span>
+                                            <input id="image" class="image" name='image' type="file"/>    
+                                        </div>
+                                        <div class = "file-path-wrapper">
+                                            <input class = "file-path validate" type = "text" placeholder = "Upload image" />
+                                        </div>
+
                                     </div>
                                 </td>
                             </tr>

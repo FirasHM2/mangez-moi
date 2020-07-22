@@ -4,7 +4,6 @@ const mongoose = require("mongoose"),
 
 var itemSchema = new Schema({
   id : String,
-  image: String,
   category : String,
   name: {
     type: String
@@ -16,7 +15,7 @@ var itemSchema = new Schema({
     default : false
   },
   image: {
-    data: Buffer,
+    type: Buffer,
     contentType: String
   }
 });
