@@ -16,8 +16,11 @@
 
 	<!-- Start Menu -->
 	<%- include("menu"); -%>
-	<%- include("sandwichDetailsPopup"); -%>
+	<div class="modal fade" id="orderModal"></div>
 	<!-- End Menu-->
+<script>
+	let userEmail = "<%=user.email%>";
+</script>
 <%- include("partials/footer"); -%>
 
 <script>

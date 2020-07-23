@@ -30,7 +30,7 @@ module.exports = function () {
     app.use(passport.session());
 
     app.use(function (req, res, next) {
-        req.user = {name:"Dinh", role:"admin"};
+        req.user = {name:"Dinh", email:"Dinh@gmail.com", role:"admin"};
         res.locals.siteUrl = config.siteUrl;
         res.locals.user = req.user;
         res.locals.module = req.path.split('/')[1];

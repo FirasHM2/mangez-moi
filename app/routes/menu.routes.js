@@ -4,4 +4,6 @@ var requireAuth = require('../middlewares/requireAuth');
 
 module.exports = function (app) {
     app.get('/menu', menu.render);
+
+    app.post('/menu/popupDetails/:cid/:pid', requireAuth, menu.popupDetails);
 };

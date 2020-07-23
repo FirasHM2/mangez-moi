@@ -202,6 +202,20 @@
 			});
 		});
 	});
+
+	$(document).on('click', '.btn-counting', (e) => {
+		let step = $(e.target).attr('data-step');
+		let target = $(e.target).attr('data-target');
+		let val = Number($(target).text() || $(target).val());
+		val += Number(step);
+		if (Number($(target).attr('min')) != 'NaN') {
+			if ($(target).attr('min') > val) return;
+		}
+		if (Number($(target).attr('max')) != 'NaN') {
+			if ($(target).attr('max') < val) return;
+		}
+		$(target).text(val) || $(target).val(val);
+	});
 	/* ..............................................
 		-----
 		................................................. */

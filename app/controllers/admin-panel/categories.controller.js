@@ -12,6 +12,12 @@ exports.get = (req, res) => {
         res.json(cat);
     });
 }
+exports.getProduct = (req, res) => {
+    let cid = req.params.cid;
+    Cats.findOne({id:cid}, (err, cat) => {
+        res.render('sandwichDetailsPopup', {data: cat});
+    });
+}
 
 exports.addCategory = function(req, res) {
     let data = req.body.data;
