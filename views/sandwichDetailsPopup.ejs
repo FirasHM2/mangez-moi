@@ -16,17 +16,17 @@
 							data.steps.forEach((step, i) => {
 						%>
 						<button class="btn btn-block" data-toggle="collapse" data-target="#step_<%=i%>"><%=step.name%></button>
-						<div id="step_<%=i%>" step-name = "<%=step.name%>" step-type = "<%=step.type%>" class="collapse step">
+						<div id="step_<%=i%>" step-name = "<%=step.name%>" step-type = "<%=step.type%>" step-collection = "<%=step.collection%>" class="collapse step">
 							<% step.items.forEach((item) => { %>
 								<% if (step.type == Constants.StepType.Single) { %>
 							<input class="" type = "radio" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" value = "<%=item.id%>" <%=item.available ? '' : 'disabled'%>>
 							<label for = "step_<%=i%>_<%=item.id%>"><%=item.name%><%=item.available ? '' : '(Not Available)'%></label><br/>
 								<% } else if (step.type == Constants.StepType.Multiple) { %>
-							<input type = "checkbox" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" <%=item.available ? '' : 'disabled'%>>
+							<input type = "checkbox" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" data-id = "<%=item.id%>" <%=item.available ? '' : 'disabled'%>>
 							<label for = "step_<%=i%>_<%=item.id%>"><%=item.name%><%=item.available ? '' : '(Not Available)'%></label><br/>
 								<% } else if (step.type == Constants.StepType.Count) { %>
 							<button class = "btn btn-floating btn-counting" data-target= "#step_<%=i%>_<%=item.id%>" data-step="-1" <%=item.available ? '' : 'disabled'%>>-</button>
-							<span id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" min = 0 max = 5>0</span>
+							<span id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" data-id = "<%=item.id%>" min = 0 max = 5>0</span>
 							<button class = "btn btn-floating btn-counting" data-target= "#step_<%=i%>_<%=item.id%>" data-step="1" <%=item.available ? '' : 'disabled'%>>+</button>
 							<span><%=item.name%><%=item.available ? '' : '(Not Available)'%></span>
 							<span class = "pull-right">+<%=item.price%>€</span><br/>
@@ -39,10 +39,10 @@
 				<div class="modal-footer">
 					<div class="col-sm-12 col-md-12">
 						<button class = "btn btn-floating btn-counting" data-target= "#totalCount" data-step="-1">-</button>
-						<span id = "totalCount" name = "totalCount" min = 0>1</span>
+						<span id = "totalCount" name = "totalCount" min = 1>1</span>
 						<button class = "btn btn-floating btn-counting" data-target= "#totalCount" data-step="1">+</button>
 						<span id = "totalPrice">8€</span>
-						<button id = "confirmOrder" type="button" class="pull-right btn btn-success">Add to Cart <i class="fa fa-shopping-cart fa-2x"></i></button>
+						<button id = "confirmOrder" type="button" class="pull-right btn btn-success"  data-dismiss="modal">Add to Cart <i class="fa fa-shopping-cart fa-2x"></i></button>
 					</div>
 				</div>
 			</div>

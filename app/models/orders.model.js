@@ -8,6 +8,7 @@ var OrderSchema = new Schema({
     category : String,
     product : String,
     details : Array,
+    count : Number,
     status : {
         type : String,
         default : "carted"
@@ -25,5 +26,5 @@ OrderSchema.pre('save', function(next) {
 
 OrderSchema.plugin(findOrCreate);
 
-var Order = mongoose.model("Cart", OrderSchema);
+var Order = mongoose.model("Order", OrderSchema);
 module.exports = Order;

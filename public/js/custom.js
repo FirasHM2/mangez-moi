@@ -189,7 +189,7 @@
 				return;
 			}
 			$.post('signup', {
-				'name' : $('#signupForm > .name').val(),
+				'name': $('#signupForm > .name').val(),
 				'email': $('#signupForm > .email').val(),
 				'password': $('#signupForm > .password').val()
 			}, function (data, status) {
@@ -202,23 +202,34 @@
 			});
 		});
 	});
-
-	$(document).on('click', '.btn-counting', (e) => {
-		let step = $(e.target).attr('data-step');
-		let target = $(e.target).attr('data-target');
-		let val = Number($(target).text() || $(target).val());
-		val += Number(step);
-		if (Number($(target).attr('min')) != 'NaN') {
-			if ($(target).attr('min') > val) return;
-		}
-		if (Number($(target).attr('max')) != 'NaN') {
-			if ($(target).attr('max') < val) return;
-		}
-		$(target).text(val) || $(target).val(val);
-	});
 	/* ..............................................
 		-----
 		................................................. */
 
 
 }(jQuery));
+
+$("#top-cart-trigger").click(function(e){
+	// $pagemenu.toggleClass('pagemenu-active', false);
+	$('#top-cart').toggleClass('top-cart-open');
+	e.stopPropagation();
+	e.preventDefault();
+});
+
+let handleCountBtn = function () {
+	let step = $(this).attr('data-step');
+	let target = $(this).attr('data-target');
+	let val = Number($(target).text() || $(target).val());
+	val += Number(step);
+	if (Number($(target).attr('min')) != 'NaN') {
+		if ($(target).attr('min') > val) return;
+	}
+	if (Number($(target).attr('max')) != 'NaN') {
+		if ($(target).attr('max') < val) return;
+	}
+	$(target).text(val) || $(target).val(val);
+};
+
+let updateCaredCount = function() {
+
+}

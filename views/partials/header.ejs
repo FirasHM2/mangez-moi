@@ -20,15 +20,16 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="<%=siteUrl%>/css/bootstrap.min.css">
   <!-- Site CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="<%=siteUrl%>/css/style.css">
   <!-- Responsive CSS -->
-  <link rel="stylesheet" href="css/responsive.css">
-  
-  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="<%=siteUrl%>/css/responsive.css">
+
+  <link rel="stylesheet" href="<%=siteUrl%>/css/font-awesome.min.css">
+  <link href="<%=siteUrl%>/sweetalert2/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="<%=siteUrl%>/css/custom.css">
   <!-- FontAwesome -->
   <script src="https://kit.fontawesome.com/55d0c547e2.js" crossorigin="anonymous"></script>
 
@@ -59,15 +60,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbars-rs-food">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" id = "home"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item" id = "menu"><a class="nav-link" href="menu">Menu</a></li>
-            <li class="nav-item" id = "gallery"><a class="nav-link" href="gallery">Gallery</a></li>
-            <li class="nav-item" id = "about"><a class="nav-link" href="about">About US</a></li>
-            <li class="nav-item" id = "contact"><a class="nav-link" href="contact">Contact US</a></li>
+            <li class="nav-item" id="home"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item" id="menu"><a class="nav-link" href="menu">Menu</a></li>
+            <li class="nav-item" id="gallery"><a class="nav-link" href="gallery">Gallery</a></li>
+            <li class="nav-item" id="about"><a class="nav-link" href="about">About US</a></li>
+            <li class="nav-item" id="contact"><a class="nav-link" href="contact">Contact US</a></li>
 
             <!-- admin area -->
             <%if (user && user.role == 'admin') { %>
-              <li class="nav-item" id = "contact"><a class="nav-link" href="admin-panel">Admin</a></li>
+            <li class="nav-item" id="contact"><a class="nav-link" href="admin-panel">Admin</a></li>
             <% } %>
 
             <% if (user) { %>
@@ -81,7 +82,42 @@
             </li>
 
             <!-- basket -->
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart fa-lg"></i></a></li>
+            <!-- <li class="nav-item" id='top-cart'><a class="nav-link" href="#"><i
+                  class="fa fa-shopping-cart fa-lg fa-2x"></i><span>5</span></a></li> -->
+            <li class="nav-item" id="top-cart">
+              <a class="nav-link" href="#" id="top-cart-trigger"><i class="fa fa-shopping-cart fa-2x"></i><span>5</span></a>
+              <div class="top-cart-content">
+                <div class="top-cart-title">
+                  <h4>Shopping Cart</h4>
+                </div>
+                <div class="top-cart-items">
+                  <div class="top-cart-item clearfix">
+                    <div class="top-cart-item-image">
+                      <a href="#"><img src="images/shop/small/1.jpg" alt="Blue Round-Neck Tshirt" /></a>
+                    </div>
+                    <div class="top-cart-item-desc">
+                      <a href="#">Blue Round-Neck Tshirt</a>
+                      <span class="top-cart-item-price">$19.99</span>
+                      <span class="top-cart-item-quantity">x 2</span>
+                    </div>
+                  </div>
+                  <div class="top-cart-item clearfix">
+                    <div class="top-cart-item-image">
+                      <a href="#"><img src="images/shop/small/6.jpg" alt="Light Blue Denim Dress" /></a>
+                    </div>
+                    <div class="top-cart-item-desc">
+                      <a href="#">Light Blue Denim Dress</a>
+                      <span class="top-cart-item-price">$24.99</span>
+                      <span class="top-cart-item-quantity">x 3</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="top-cart-action clearfix">
+                  <span class="fleft top-checkout-price">$114.95</span>
+                  <button class="button button-3d button-small nomargin fright">View Cart</button>
+                </div>
+              </div>
+            </li><!-- #top-cart end -->
             <% } %>
 
             <!-- singin/out -->
