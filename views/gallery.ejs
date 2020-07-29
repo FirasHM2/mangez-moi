@@ -26,36 +26,19 @@
 		</div>
 		<div class="tz-gallery">
 			<div class="row">
+				<% for (i in gallerys) {
+					var gallery = gallerys[i]; 
+				%>
 				<div class="col-sm-12 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-01.jpg">
-						<img class="img-fluid" src="images/gallery-img-01.jpg" alt="Gallery Images">
-					</a>
+					<div class="gallery-single fix lightbox">
+						<img class="img-fluid" src="<%= gallery.image%>" alt="Gallery Images" style="height : 230px">
+						<div class="why-text">
+							<h4>Name:<%=gallery.name%></h4>
+							<p>Description:<%=gallery.description%></p>
+						</div>
+					</div>
 				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-02.jpg">
-						<img class="img-fluid" src="images/gallery-img-02.jpg" alt="Gallery Images">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-03.jpg">
-						<img class="img-fluid" src="images/gallery-img-03.jpg" alt="Gallery Images">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-04.jpg">
-						<img class="img-fluid" src="images/gallery-img-04.jpg" alt="Gallery Images">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-05.jpg">
-						<img class="img-fluid" src="images/gallery-img-05.jpg" alt="Gallery Images">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-4">
-					<a class="lightbox" href="images/gallery-img-06.jpg">
-						<img class="img-fluid" src="images/gallery-img-06.jpg" alt="Gallery Images">
-					</a>
-				</div>
+				<% } %>
 			</div>
 		</div>
 	</div>

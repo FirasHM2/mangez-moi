@@ -29,7 +29,9 @@ exports.popupDetails = (req, res) => {
         let tasks = cat.steps.map((step) => {
             let model = require('mongoose').model(step.collection);
             let cond = {};
-            if (step.collection == "Bread") cond = {category:cid};
+            console.log('step collection', step.collection);
+            console.log('contains category ', step.collection in ["Bread", "Meat"]);
+            if (["Bread", "Meat"].includes(step.collection)) cond = {category:cid};
             return model.find(cond, (err, items) => {
                 step.items = items;
                 data.steps.push(step);

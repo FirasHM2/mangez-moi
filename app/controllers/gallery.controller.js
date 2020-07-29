@@ -1,4 +1,7 @@
+var Gallerys = require('mongoose').model('Gallery');
 
-exports.render = function (req, res) {
-    res.render("gallery", {});   
+exports.gallerytList = function(req, res) {
+    Gallerys.find({}, (err, gallerys) => {
+        res.render('gallery', {gallerys:gallerys});
+    });
 }

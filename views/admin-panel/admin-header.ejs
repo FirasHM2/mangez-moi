@@ -18,7 +18,8 @@
   <!-- For Windows Phone -->
 
   <!-- CORE CSS-->
-  <link href="<%=siteUrl%>/admin-panel/css/materialize.min.css" type="text/css" rel="stylesheet">
+  <link href="<%=siteUrl%>/admin-panel/css/materialize.min.css" type="text/css" rel="stylesheet"
+    media="screen,projection">
   <link href="<%=siteUrl%>/admin-panel/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custome CSS-->
   <link href="<%=siteUrl%>/admin-panel/css/custom/custom.min.css" type="text/css" rel="stylesheet"
@@ -133,6 +134,7 @@
                       class="mdi-image-details"></i> Details</a>
                   <div class="collapsible-body">
                     <ul>
+                        <li class="<%=controller == 'meats' ? 'active' : ''%>"><a href="/admin-panel/meats" class="waves-effect waves-cyan">Meats</a></li>
                       <li class="<%=controller == 'breads' ? 'active' : ''%>"><a href="/admin-panel/breads" class="waves-effect waves-cyan">Breads</a></li>
                       <li class="<%=controller == 'ingredients' ? 'active' : ''%>"><a href="/admin-panel/ingredients" class="waves-effect waves-cyan">Ingredients</a></li>
                       <li class="<%=controller == 'sauces' ? 'active' : ''%>"><a href="/admin-panel/sauces" class="waves-effect waves-cyan">Sauces</a></li>
@@ -178,7 +180,7 @@
                   <ul>
                       <!-- <li class="<%=controller == 'categories' ? 'active' : ''%>"><a href="/admin-panel/categories" class="waves-effect waves-cyan">Categories</a></li> -->
                     <li><a href="#" class="waves-effect waves-cyan">Slides</a></li>
-                    <li><a href="/admin-panel/management/gallery" class="waves-effect waves-cyan">Gallery</a></li>
+                    <li class="<%=controller == 'gallerys' ? 'active' : ''%>"><a href="/admin-panel/gallerys" class="waves-effect waves-cyan">Gallery</a></li>
                     <li><a href="#" class="waves-effect waves-cyan">Stuff</a></li>
                     <li><a href="#" class="waves-effect waves-cyan">Reviews</a></li>
                   </ul>

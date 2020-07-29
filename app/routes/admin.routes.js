@@ -8,6 +8,8 @@ var products = require('../controllers/admin-panel/products.controller');
 var breads = require('../controllers/admin-panel/breads.controller');
 var ingredients = require('../controllers/admin-panel/ingredients.controller');
 var requireAdmin = require('../middlewares/requireAdmin');
+var meats = require('../controllers/admin-panel/meats.controller');
+var gallerys = require('../controllers/admin-panel/gallerys.controller');
 
 module.exports = function (app) {
     app.get('/admin-panel', requireAdmin, users.render);
@@ -31,6 +33,11 @@ module.exports = function (app) {
     app.post('/admin-panel/breads/add', requireAdmin, breads.addBread);
     app.post('/admin-panel/breads/update', requireAdmin, breads.updateBread);
     app.post('/admin-panel/breads/delete', requireAdmin, breads.deleteBread);
+
+    app.get('/admin-panel/meats', requireAdmin, meats.meatsList);
+    app.post('/admin-panel/meats/add', requireAdmin, meats.addMeat);
+    app.post('/admin-panel/meats/update', requireAdmin, meats.updateMeat);
+    app.post('/admin-panel/meats/delete', requireAdmin, meats.deleteMeat);
 
     app.get('/admin-panel/ingredients', requireAdmin, ingredients.getList);
     app.post('/admin-panel/ingredients/add', requireAdmin, ingredients.add);
@@ -56,5 +63,10 @@ module.exports = function (app) {
     app.post('/admin-panel/drinks/add', requireAdmin, drinks.add);
     app.post('/admin-panel/drinks/update', requireAdmin, drinks.update);
     app.post('/admin-panel/drinks/delete', requireAdmin, drinks.delete);
+
+    app.get('/admin-panel/gallerys', requireAdmin, gallerys.gallerytList);
+    app.post('/admin-panel/gallerys/add', requireAdmin, gallerys.addGallery);
+    app.post('/admin-panel/gallerys/delete', requireAdmin, gallerys.deleteGallery);
+    app.post('/admin-panel/gallerys/update', requireAdmin, gallerys.updateGallery);
 
 };
