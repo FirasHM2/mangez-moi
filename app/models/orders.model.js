@@ -4,11 +4,15 @@ var mongoose = require("mongoose"),
 
 var OrderSchema = new Schema({
     id : String,
-    customer : String,
+    customer : Object,
     category : String,
     product : String,
     details : Array,
     count : Number,
+    comment : {
+        type : String,
+        default : ""
+    },
     status : {
         type : String,
         default : "carted"

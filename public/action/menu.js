@@ -22,26 +22,37 @@ $(document).ready(() => {
 
 $(document).on('click', '#confirmOrder', () => {
     let order = getOrderData();
-    $.post(siteUrl + '/menu/addOrder', order).done((data) => {
-        Swal.fire({
-            title: 'Success',
-            text: 'Successfully carted!',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-        });
-    })
-    .fail(() => {
-        Swal.fire({
-            title: 'Failed',
-            text: 'Oops something goes wrong!',
-            icon: 'error',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-        });
-    })
+    Swal.fire({
+        title: 'Comments',
+        text: "Leave comment here",
+        icon: 'info',
+        input: 'textarea', 
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Send'
+    }).then((result) => {
+        order.comment = result.value;
+        console.log('comment', order.comment);
+        $.post(siteUrl + '/menu/addOrder', order).done((data) => {
+            Swal.fire({
+                title: 'Success',
+                text: 'Successfully carted!',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });
+        })
+        .fail(() => {
+            Swal.fire({
+                title: 'Failed',
+                text: 'Oops something goes wrong!',
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });
+        })
+    });
 });
 
 let updatePrice = () => {
