@@ -1,0 +1,66 @@
+<%- include("partials/header"); -%>
+<!-- End header -->
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Cart</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start Contact -->
+<div class="container contact-box">
+    <div class="table-responsive bottommargin">
+        <table class="table cart">
+            <thead>
+                <tr>
+                    <th class="cart-product-remove">&nbsp;</th>
+                    <th class="cart-product-thumbnail">&nbsp;</th>
+                    <th class="cart-product-name">Product</th>
+                    <th class="cart-product-price">Unit Price</th>
+                    <th class="cart-product-quantity">Quantity</th>
+                    <th class="cart-product-subtotal">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart_item">
+                    <td class="cart-product-remove">
+                        <a class="remove" title="Remove this item"><i class="fa fa-trash"></i></a>
+                    </td>
+
+                    <td class="cart-product-thumbnail">
+                        <a href="#"><img width="64" height="64" src="" alt=""></a>
+                    </td>
+
+                    <td class="cart-product-name">
+                        <a href="#">product 1</a>
+                    </td>
+
+                    <td class="cart-product-price">
+                        <span class="amount">$19.99</span>
+                    </td>
+
+                    <td class="cart-product-quantity">
+                        <div class="quantity clearfix">
+                            <input type="button" value="-" class="minus">
+                            <input type="text" name="quantity" value="2" class="qty" />
+                            <input type="button" value="+" class="plus">
+                        </div>
+                    </td>
+
+                    <td class="cart-product-subtotal">
+                        <span class="amount">$39.98</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- End Gallery -->
+<%- include("partials/footer"); -%>

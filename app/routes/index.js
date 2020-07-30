@@ -6,4 +6,5 @@ module.exports = function (app) {
     require('./menu.routes')(app);
     require('./gallery.routes')(app);
     require('./admin.routes')(app);
+    require('./cart.routes')(app);
 };

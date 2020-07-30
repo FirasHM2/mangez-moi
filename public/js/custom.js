@@ -50,6 +50,10 @@
 		if (!container.is(e.target) && container.has(e.target).length === 0) {
 			$(".signInPopUpContainer").css("display", "none");
 		}
+		container = $('.top-cart-open .top-cart-content');
+		if (!container.is(e.target) && container.has(e.target).length === 0) {
+			$(".top-cart-open").toggleClass("top-cart-open");
+		}
 	});
 	/* ..............................................
 		 SUBMIT MENU
@@ -141,6 +145,7 @@
 		$('.ml-auto > active').removeClass('active');
 		if (current_url == '') $("#home").addClass('active');
 		else $('#' + current_url).addClass('active');
+		updateCarted();
 
 		/* ..............................................
 			state of nav bar
@@ -209,13 +214,6 @@
 
 }(jQuery));
 
-$("#top-cart-trigger").click(function(e){
-	// $pagemenu.toggleClass('pagemenu-active', false);
-	$('#top-cart').toggleClass('top-cart-open');
-	e.stopPropagation();
-	e.preventDefault();
-});
-
 let handleCountBtn = function () {
 	let step = $(this).attr('data-step');
 	let target = $(this).attr('data-target');
@@ -230,6 +228,13 @@ let handleCountBtn = function () {
 	$(target).text(val) || $(target).val(val);
 };
 
-let updateCaredCount = function() {
-
+let updateCarted = function() {
+	$.post(siteUrl + '/menu/getCarted').done((data) => {
+		$('#top-cart').replaceWith(data);
+		$("#top-cart-trigger").click(function(e){
+			$('#top-cart').toggleClass('top-cart-open');
+			e.stopPropagation();
+			e.preventDefault();
+		});
+	});
 }

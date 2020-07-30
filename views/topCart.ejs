@@ -1,0 +1,28 @@
+<li class="nav-item" id="top-cart">
+    <a class="nav-link" href="#" id="top-cart-trigger"><i class="fa fa-shopping-cart fa-2x"></i><span id='top-cart-count'><%=orders.length%></span></a>
+    <div class="top-cart-content">
+        <div class="top-cart-title">
+            <span>Cart</span>
+            <a class="pull-right" href="<%=siteUrl%>/cart">View Details <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+        <% let totalPrice = 0 %>
+        <div class="top-cart-items">
+            <% orders.forEach((order) => { %>
+            <div class="top-cart-item clearfix">
+                <div class="top-cart-item-image">
+                    <a href="#"><img src="<%= order.product.image %>" alt="<%= order.product.name %>" /></a>
+                </div>
+                <div class="top-cart-item-desc">
+                    <a href="#"><%= order.product.name %></a>
+                    <span class="top-cart-item-price"><%= order.price %> €</span>
+                    <span class="top-cart-item-quantity">x <%= order.count %></span>
+                </div>
+            </div>
+            <% totalPrice += order.price * order.count; }) %>
+        </div>
+        <div class="top-cart-action clearfix">
+            <span class="fleft top-checkout-price"><%= totalPrice %> €</span>
+            <button class="button button-3d button-small nomargin pull-right">Checkout</button>
+        </div>
+    </div>
+</li><!-- #top-cart end -->

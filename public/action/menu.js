@@ -41,6 +41,7 @@ $(document).on('click', '#confirmOrder', () => {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'OK'
             });
+            updateCarted();
         })
         .fail(() => {
             Swal.fire({
@@ -65,7 +66,7 @@ let updatePrice = () => {
         count : order.count,
         details: order.details
     }, (data) => {
-        $('#orderModal #totalPrice').text(data + "€");
+        $('#orderModal #totalPrice').text(data * order.count + "€");
     })
 }
 

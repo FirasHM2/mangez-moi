@@ -13,8 +13,6 @@ exports.render = (req, res) => {
             as : "products"
         }
     }], (err, cats) => {
-        console.log('cats', cats);
-        console.log('constants', Constants);
         res.render('menuPage', {data : cats, Constants : Constants});
     });
 }
@@ -29,8 +27,6 @@ exports.popupDetails = (req, res) => {
         let tasks = cat.steps.map((step) => {
             let model = require('mongoose').model(step.collection);
             let cond = {};
-            console.log('step collection', step.collection);
-            console.log('contains category ', step.collection in ["Bread", "Meat"]);
             if (["Bread", "Meat"].includes(step.collection)) cond = {category:cid};
             return model.find(cond, (err, items) => {
                 step.items = items;
@@ -38,15 +34,14 @@ exports.popupDetails = (req, res) => {
             });
         });
         Promise.all(tasks).then(() => {
-            console.log('data', data);
             res.render('sandwichDetailsPopup', {data, Constants});
         });
     })
 }
 
 exports.getOrderPrice = (req, res) => {
-    this._getOrderPrice(req, res, (req, res) => {
-        res.json(req.totalPrice);
+    this._getOrderPrice(req.body).then(price => {
+        res.json(price);
     });
 }
 
@@ -62,22 +57,49 @@ exports.addOrder = (req, res) => {
     });
 }
 
-exports.getCartedCount = (req, res) => {
-    Orders.find({'customer.email': req.user.email}, (err, orders) => {
-        res.json(orders);
+exports.getCarted = (req, res) => {
+    Orders.aggregate([
+    {
+        $match : {
+            'customer.email' : req.user.email
+        }
+    },
+    {
+        $lookup : {
+            from : "products",
+            localField : "product",
+            foreignField : "id",
+            as : "product"
+        }
+    },
+    {
+        $unwind: "$product"
+    }], (err, orders) => {
+        let nOrders = [];
+        let tasks = orders.map(order => {
+            let orderData = Object.assign({}, order);
+            orderData.product = order.product.id;
+            return this._getOrderPrice(orderData).then(price => {
+                order.price = price;
+                nOrders.push(order);
+            });
+        });
+        Promise.all(tasks).then(() => {
+            res.render('topCart', {'orders': nOrders});
+        });
     });
 };
 
-exports._getOrderPrice = (req, res, next) => {
-    let order = req.body;
+exports._getOrderPrice = (orderData) => {
+    let order = orderData;
     let totalPrice = 0;
-    Products.findOne({id:order.product}).then((product) => {totalPrice += product.price;})
+    return Products.findOne({id:order.product})
+    .then((product) => {totalPrice += product.price;})
     .then(() => {
         let tasks = [];
         order.details.forEach((stepDetail) => {
             let type = stepDetail.type;
             let collection = stepDetail.collection;
-            console.log('collection', collection);
             let model = require('mongoose').model(collection);
             let stepTotal = 0;
             let stepTasks = [];
@@ -92,14 +114,8 @@ exports._getOrderPrice = (req, res, next) => {
             }
             tasks.push(Promise.all(stepTasks).then(() => {
                 totalPrice += stepTotal;
-                console.log('step total added');
             }));
         });
-        Promise.all(tasks).then(() => {
-            totalPrice *= order.count;
-            console.log('total price', totalPrice);
-            req.totalPrice = totalPrice;
-            next(req, res);
-        });
+        return Promise.all(tasks).then(() => totalPrice);
     });
 }

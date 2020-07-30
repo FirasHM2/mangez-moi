@@ -96,7 +96,6 @@ $("#add").click(function () {
             $(this).parent().parent().find("input[readonly]").each(function () {
                 $(this).prop('readonly', false);
             });
-
         });
 
         $($(nRow).find('button[name="save"]')[0]).click(function () {
