@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Welcome to Admin!</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="<%=siteUrl%>/admin-panel/images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed"
+        href="<%=siteUrl%>/admin-panel/images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="<%=siteUrl%>/admin-panel/images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+    <link href="<%=siteUrl%>/sweetalert2/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+<!-- jQuery Library -->
+<script type="text/javascript" src="<%=siteUrl%>/admin-panel/js/plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="<%=siteUrl%>/sweetalert2/sweetalert2.all.js"></script>
+<script>
+    $(document).ready(() => {
+        Swal.fire({
+            title: 'Warnning!',
+            text: 'No categories be found. Please insert categories first!',
+            icon: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        }).then(function (result) {
+            window.location.href = '<%=siteUrl%>/admin-panel/categories';
+        });
+    })
+</script>
+</body>
+
+</html>

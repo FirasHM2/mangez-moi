@@ -19,7 +19,7 @@
 						<div id="step_<%=i%>" step-name = "<%=step.name%>" step-type = "<%=step.type%>" step-collection = "<%=step.collection%>" class="collapse step">
 							<% step.items.forEach((item) => { %>
 								<% if (step.type == Constants.StepType.Single) { %>
-							<input class="" type = "radio" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" value = "<%=item.id%>" <%=item.available ? '' : 'disabled'%>>
+							<input class="with-gap" type = "radio" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" value = "<%=item.id%>" <%=item.available ? '' : 'disabled'%>>
 							<label for = "step_<%=i%>_<%=item.id%>"><%=item.name%><%=item.available ? '' : '(Not Available)'%></label><br/>
 								<% } else if (step.type == Constants.StepType.Multiple) { %>
 							<input type = "checkbox" id = "step_<%=i%>_<%=item.id%>" name = "step_<%=i%>" data-id = "<%=item.id%>" <%=item.available ? '' : 'disabled'%>>
@@ -41,8 +41,7 @@
 						<button class = "btn btn-floating btn-counting" data-target= "#totalCount" data-step="-1">-</button>
 						<span id = "totalCount" name = "totalCount" min = 1>1</span>
 						<button class = "btn btn-floating btn-counting" data-target= "#totalCount" data-step="1">+</button>
-						<span id = "totalPrice">8€</span>
-						<button id = "confirmOrder" type="button" class="pull-right btn btn-success"  data-dismiss="modal">Add to Cart <i class="fa fa-shopping-cart fa-2x"></i></button>
+						<button id = "confirmOrder" type="button" class="pull-right btn btn-success"  data-dismiss="modal">Add to Cart <span id = "totalPrice"></span></button>
 					</div>
 				</div>
 			</div>

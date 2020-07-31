@@ -16,6 +16,7 @@ $(document).ready(() => {
             $('.collapse').each(function(){
                 $(this).addClass('show');
             });
+            updatePrice();
         });
     });
 });
@@ -66,7 +67,7 @@ let updatePrice = () => {
         count : order.count,
         details: order.details
     }, (data) => {
-        $('#orderModal #totalPrice').text(data * order.count + "€");
+        $('#orderModal #totalPrice').text("€ " + data * order.count);
     })
 }
 

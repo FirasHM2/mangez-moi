@@ -4,6 +4,9 @@ var Cats = require('mongoose').model('Category');
 exports.breadsList = function(req, res) {
     Cats.find({}, (err, cats) => cats)
     .then((cats) => {
+        if (cats.length == 0) {
+            res.redirect('/admin-panel/goToCategory');
+        }
         Breads.find({}, (err, breads) => {
             res.render('admin-panel/details/breads', {active:'details', breads:breads, cats:cats});
         });
@@ -12,7 +15,6 @@ exports.breadsList = function(req, res) {
 
 exports.addBread = function(req, res) {
     let data = req.body.data;
-    console.log("data", data);
     Breads.findOne({
         'category': data.category,
         'name': data.name
@@ -20,6 +22,12 @@ exports.addBread = function(req, res) {
         if (err) {
             res.status(500).send(err);
             return;
+        }
+        if (bread) {
+            res.json({
+                'status':'Duplicate',
+                'msg' : 'Already Exist with Same Name!'
+            });
         }
         if (!bread) {
             bread = new Breads({
@@ -35,7 +43,7 @@ exports.addBread = function(req, res) {
                 res.send(bread._id);
                 return;
             });
-        } else res.send("already_exist");
+        }
     });
 }
 

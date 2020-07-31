@@ -61,7 +61,8 @@ exports.getCarted = (req, res) => {
     Orders.aggregate([
     {
         $match : {
-            'customer.email' : req.user.email
+            'customer.email' : req.user.email,
+            'status' : 'carted'
         }
     },
     {

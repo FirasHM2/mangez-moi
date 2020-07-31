@@ -4,6 +4,9 @@ var Cats = require('mongoose').model('Category');
 exports.productList = function(req, res) {
     Cats.find({}, (err, cats) => cats)
     .then((cats) => {
+        if (cats.length == 0) {
+            res.redirect('/admin-panel/goToCategory');
+        }
         Products.find({}, (err, products) => {
             res.render('admin-panel/menu/products', {active:'menu', products:products, cats:cats});
         });

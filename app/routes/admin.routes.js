@@ -69,4 +69,7 @@ module.exports = function (app) {
     app.post('/admin-panel/gallerys/delete', requireAdmin, gallerys.deleteGallery);
     app.post('/admin-panel/gallerys/update', requireAdmin, gallerys.updateGallery);
 
+    app.get('/admin-panel/goToCategory', (req, res) => {
+        res.render('admin-panel/goToCategory');
+    });
 };

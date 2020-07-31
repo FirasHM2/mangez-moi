@@ -17,11 +17,7 @@ $("#add").on('click', function() {
         }
     }, function(id) {
         if (id === 'already_exist') {
-            Swal.fire({
-                title:'Sorry!',
-                text: 'This item is already exist!',
-                icon:'info'
-            });
+            Materialize.toast('This item is already exist!', 2000, 'red');
             return;
         }
 

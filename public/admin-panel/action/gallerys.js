@@ -40,7 +40,7 @@ $("#add").click(function () {
             image: image_data
         }
     }, function (id) {
-        if(id == "already_exist"){
+        if(id == "already_exist") {
             Materialize.toast('already exist!', 2000, "red");
             return;
         }

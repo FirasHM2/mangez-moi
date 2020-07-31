@@ -13,6 +13,10 @@ var OrderSchema = new Schema({
         type : String,
         default : ""
     },
+    shipping : {
+        type : String,
+        default: "Delivery"
+    },
     status : {
         type : String,
         default : "carted"

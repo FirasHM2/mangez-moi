@@ -52,7 +52,7 @@ exports.addCategory = function(req, res) {
                 res.send({status:'Success', id:cat.id});
                 return;
             });
-        } else res.send("already_exist");
+        }
     });
 }
 

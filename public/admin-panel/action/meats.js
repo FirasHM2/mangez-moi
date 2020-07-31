@@ -28,6 +28,10 @@ $("#add").click(function() {
             price: $("#price").val()
         }
     }, function(id) {
+        if (id === 'already_exist') {
+            Materialize.toast('This item is already exist!', 2000, 'red');
+            return;
+        }
         var nRow = $table.row.add(['<input value="' + $("#name").val() + '" type="text" readonly>', '<input value="' + $("#price").val() + '" type="number" readonly>', '<input type="checkbox" name="available" id="'+id+'_available" /><label for="' + id + '_available">Not Available</label>', '<button class="btn blue waves-effect waves-light" name="update"><i class="mdi-content-create"></i></button> <button class="btn green waves-effect waves-light" name="save"><i class="mdi-content-save"></i></button> <button class="btn cyan waves-effect waves-light" name="delete"><i class="mdi-action-delete"></i></button>', $('#categoryId').val()]).draw().node();
         $(nRow).attr('data-key', id);
         $(nRow).attr('id', id);
