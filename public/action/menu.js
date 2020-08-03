@@ -34,15 +34,15 @@ $(document).on('click', '#confirmOrder', () => {
         order.comment = result.value;
         console.log('comment', order.comment);
         $.post(siteUrl + '/menu/addOrder', order).done((data) => {
+            updateCarted();
             Swal.fire({
-                title: 'Success',
                 text: 'Successfully carted!',
                 icon: 'success',
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'OK'
+                toast: true,
+                timer: 2000,
+                showConfirmButton: false,
+                position : "top-end",
             });
-            updateCarted();
         })
         .fail(() => {
             Swal.fire({

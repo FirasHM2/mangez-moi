@@ -29,7 +29,8 @@
                 </tr>
             </thead>
             <tbody>
-                <% orders.forEach((order) => { %>
+                <% let total = 0;
+                orders.forEach((order) => { %>
                 <tr class="cart_item" id = "<%=order.id%>">
                     <td class="cart-product-thumbnail">
                         <a href="#"><img width="64" height="64" src="<%=order.product.image%>" alt="<%=order.product.name%>"></a>
@@ -58,7 +59,23 @@
                         <a class="remove" title="Remove this item"><i class="fa fa-trash fa-lg"></i></a>
                     </td>
                 </tr>
-                <%})%>
+                <%  total += order.price * order.count;
+            })%>
+                <tr class="cart_total">
+                    <td colspan="7">
+                        <div class="row clearfix">
+                            <div class="col-md-4 col-xs-4 nopadding">
+                                <h2><b>
+                                    Cart Total
+                                    <span class="color">€ <%=total%></span>
+                                </b></h2>
+                            </div>
+                            <div class="col-md-8 col-xs-8 nopadding">
+                                <a href="<%=siteUrl%>/checkout" class="button button-3d notopmargin fright">Proceed to Checkout</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
