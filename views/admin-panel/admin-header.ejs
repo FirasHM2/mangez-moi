@@ -30,6 +30,9 @@
   <link href="<%=siteUrl%>/admin-panel/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css"
     rel="stylesheet" media="screen,projection">
   <link href="<%=siteUrl%>/sweetalert2/sweetalert2.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <!-- Summernote -->
+  <link href="<%=siteUrl%>/admin-panel/css/summernote-lite.css" type="text/css" rel="stylesheet"
+    media="screen,projection">
 </head>
 
 <body>
@@ -179,7 +182,7 @@
                 <div class="collapsible-body">
                   <ul>
                       <!-- <li class="<%=controller == 'categories' ? 'active' : ''%>"><a href="/admin-panel/categories" class="waves-effect waves-cyan">Categories</a></li> -->
-                    <li><a href="#" class="waves-effect waves-cyan">Slides</a></li>
+                    <li class="<%=controller == 'slides' ? 'active' : ''%>"><a href="/admin-panel/slides" class="waves-effect waves-cyan">Slides</a></li>
                     <li class="<%=controller == 'gallerys' ? 'active' : ''%>"><a href="/admin-panel/gallerys" class="waves-effect waves-cyan">Gallery</a></li>
                     <li><a href="#" class="waves-effect waves-cyan">Stuff</a></li>
                     <li><a href="#" class="waves-effect waves-cyan">Reviews</a></li>

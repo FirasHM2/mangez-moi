@@ -1,0 +1,215 @@
+<%- include("../admin-header"); -%>
+<style>
+    .input-field div.error {
+        position: relative;
+        top: -1rem;
+        left: 0rem;
+        font-size: 0.8rem;
+        color: #FF4081;
+        -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    .input-field label.active {
+        width: 100%;
+    }
+    .dataTables_filter {
+        display: none
+    }
+    .gallery-single{
+	margin-bottom: 30px;
+}
+
+.gallery-single {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    transition: transform 0.25s;
+}
+.gallery-single:hover{
+  transform: translateY(-0.5rem);
+}
+
+.why-text {
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    right: 0;
+    height: 100%;
+    background: rgba(207, 166, 113, 0.9);
+    padding: 12px 12px;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.why-text h4{
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Rubik', sans-serif;
+}
+.why-text div{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+.center{
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: left;
+}
+.center h1{
+    color: rgb(255, 255, 255);
+}
+.btn-size button{
+    width:80px;
+    margin-left: 0px;
+    margin-right: 0px; 
+}
+.btn-margin button{
+    width:80px;
+    margin-left: 3px;
+    margin-right: 2px; 
+}
+.why-text p{
+	color: #ffffff;
+	font-size: 13px;
+	border-bottom: 1px dashed #010101;
+	margin: 0px;
+	padding-bottom: 15px;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+.why-text h5{
+	font-size: 18px;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.gallery-single:hover .why-text{
+	bottom: 0px;
+  cursor: pointer;
+}
+
+</style>
+
+<section id="content">
+    <!--slide start-->
+   <div id="breadcrumbs-wrapper">
+       <div class="container">
+           <div class="row">
+               <div class="col s12 m12 l12">
+                   <h5 class="breadcrumbs-title">Slide</h5>
+               </div>
+           </div>
+       </div>
+   </div>
+     <!--breadcrumbs end-->
+     <style>
+        ul {
+            list-style-type: disclosure-closed;
+        }
+        ul li {
+            list-style-type: disclosure-closed;
+        }
+    </style>
+
+<p class="caption">Add, Edit or Remove Slides Items.</p>
+<div class="">
+
+        <div class="">
+            <div class="row" id="slide_element" style="margin-left:auto">
+                        <% for (i in slides) {
+                            var slide = slides[i]; 
+                        %>
+
+                        <div class="col s12 m4 l4"  data-key='<%= slide.id %>' id = '<%= slide.id %>'>
+                                <div class="gallery-single fix lightbox" style="height:230px;width:100%" >
+                                    <div class="img-fluid" id = '<%= slide.id %>_content' style="background-image:url('<%= slide.image%>');
+                                            background-size:100% 100%;width:100%;height:100%;"
+                                            data-content="<%= slide.content %>" data-image="<%= slide.image%>">
+                                            <div class="center">
+                                                <%- slide.content -%>
+                                            </div>
+                                    </div>
+                                    <div class="why-text">
+                                        <div class="btn-size">
+                                            <button class="btn blue waves-effect waves-light" name='update' style="padding-top:0px"><i class="mdi-content-create"></i></button>
+                                            <button class="btn green waves-effect waves-light" style="padding-top:0px" name='save'><i class="mdi-content-save"></i></button>
+                                            <button class="btn cyan waves-effect waves-light" style="padding-top:0px" name='delete'><i class="mdi-action-delete"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <!-- <tr data-key='<%= slide.id %>' id = '<%= slide.id %>'>
+                         
+                            <td>
+                                <hidden value="<%= slide.content %>" id="<%= slide.id %>_content"  type="text" readonly>
+                            </td>
+                            <td>
+                                <img id="<%= slide.id %>_image" name="image" src = "<%= slide.image%>" width = "80", height = "80" class="tooltipped " data-position="left" data-delay="50" data-tooltip='<div style = "background-image:url(<%= slide.image%>); background-size: cover; height:300px;width:400px;vertical-align: middle;text-align: left;">
+                                        <div class="col-md-12" id="silver">y
+                                            <%- slide.content -%>
+                                            <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#<%= slide.buttonUrl %>"><%= slide.buttonName %></a></p>
+                                        </div>
+                                </div>'/>
+                                <input type = "file" class = "image" hidden />
+                            </td>
+
+                            <td>
+                                <button class="btn blue waves-effect waves-light" name='update'><i class="mdi-content-create"></i></button>
+                                <button class="btn green waves-effect waves-light" name='save'><i class="mdi-content-save"></i></button>
+                                <button class="btn cyan waves-effect waves-light" name='delete'><i class="mdi-action-delete"></i></button>
+                            </td>
+                        </tr> -->
+                        <% } %>
+            </div>
+        </div>
+
+        <div class="col s12 m4 l3">
+            <h4 class="header">Add Item</h4>
+        </div>
+        <!-- <div class="divider"></div> -->
+   <div class="summernote" id="summernote" ></div>
+   <div class="file-field input-field col s12">
+       <div class = "btn">
+           <span>Browse</span>
+           <input id="image" class="image" name='image' type="file"/>    
+       </div>
+       <div class = "file-path-wrapper">
+           <input class = "file-path validate" type = "text" placeholder = "Upload image" />
+       </div>
+   </div>
+    <div class="input-field col s12">
+        <a class="btn btn-lg cyan waves-effect waves-light right" id="add">Add
+        <i class="mdi-content-send right"></i>
+       </a>
+        <a class="btn btn-lg cyan waves-effect waves-light right" id="_update" style="display: none">Update
+         <i class="mdi-content-send right"></i>
+       </a>
+   </div>
+</section>
+
+<script>
+    var siteUrl = '<%= siteUrl %>';
+    console.log('active', '<%= active %>');
+    console.log('controller', '<%= controller %>');
+</script>
+
+<%- include("../admin-footer"); -%>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.summernote').summernote({
+        height: 300,
+        tabsize: 2
+      });
+    });
+  </script>

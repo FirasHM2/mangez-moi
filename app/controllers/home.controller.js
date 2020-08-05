@@ -1,5 +1,8 @@
 let Constants = require('../../config/constants');
+var Slides = require('mongoose').model('Slide');
 
-exports.render = function (req, res) {
-    res.render("index", {});
+exports.slideList = function(req, res) {
+    Slides.find({}, (err, slides) => {
+        res.render('index', {slides:slides});
+     });
 }

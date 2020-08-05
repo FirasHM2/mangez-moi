@@ -10,7 +10,7 @@ var ingredients = require('../controllers/admin-panel/ingredients.controller');
 var requireAdmin = require('../middlewares/requireAdmin');
 var meats = require('../controllers/admin-panel/meats.controller');
 var gallerys = require('../controllers/admin-panel/gallerys.controller');
-
+var slides = require('../controllers/admin-panel/slides.controller');
 module.exports = function (app) {
     app.get('/admin-panel', requireAdmin, users.render);
 
@@ -72,4 +72,9 @@ module.exports = function (app) {
     app.get('/admin-panel/goToCategory', (req, res) => {
         res.render('admin-panel/goToCategory');
     });
+
+    app.get('/admin-panel/slides', requireAdmin, slides.slideList);
+    app.post('/admin-panel/slides/add', requireAdmin, slides.addSlide);
+    app.post('/admin-panel/slides/delete', requireAdmin, slides.deleteSlide);
+    app.post('/admin-panel/slides/update', requireAdmin, slides.updateSlide);
 };
