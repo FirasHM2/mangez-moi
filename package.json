@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "restaurant mangez-moi",
   "main": "app.js",
-  "engines": {
-    "node": "11.x",
-    "npm": "6.x"
-  },
   "scripts": {
     "dev": "nodemon --exec node app.js",
     "prestart": "start mongod --dbpath ./db",
@@ -15,6 +11,9 @@
   },
   "author": "Haj mabrouk firas",
   "license": "ISC",
+  "engines": {
+    "node": "11.x"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
