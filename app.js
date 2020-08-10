@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001
 var db = mongoose();
 var app = express();
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 module.exports = app;
 
-console.log('Server running at http://localhost:3001/');
+// console.log('Server running at http://localhost:3001/');
